@@ -1,0 +1,53 @@
+# CMake generation dependency list for this directory.
+d:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/CMakeLists.txt
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeVS11FindMake.cmake
+D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/CMakeFiles/2.8.10.2/CMakeSystem.cmake
+D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/CMakeFiles/2.8.10.2/CMakeCCompiler.cmake
+D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/CMakeFiles/2.8.10.2/CMakeCXXCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeSystemSpecificInformation.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeGenericSystem.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/WindowsPaths.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCInformation.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-MSVC-C.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-MSVC.cmake
+D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/CMakeFiles/2.8.10.2/CMakeRCCompiler.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeRCInformation.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCXXInformation.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-MSVC-CXX.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-MSVC.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake
+d:/Python27/share/cmake/qibuild/qibuild-config.cmake
+D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/dependencies.cmake
+d:/Python27/share/cmake/qibuild/general.cmake
+d:/Python27/share/cmake/qibuild/version.cmake
+d:/Python27/share/cmake/qibuild/log.cmake
+d:/Python27/share/cmake/qibuild/set.cmake
+d:/Python27/share/cmake/qibuild/subdirectory.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeParseArguments.cmake
+d:/Python27/share/cmake/qibuild/internal/layout.cmake
+d:/Python27/share/cmake/qibuild/internal/install.cmake
+d:/Python27/share/cmake/qibuild/internal/glob.cmake
+d:/Python27/share/cmake/qibuild/python.cmake
+d:/Python27/share/cmake/qibuild/find.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeParseArguments.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/FindPackageHandleStandardArgs.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/FindPackageMessage.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeParseArguments.cmake
+d:/Python27/share/cmake/qibuild/flags.cmake
+d:/Python27/share/cmake/qibuild/tests.cmake
+d:/Python27/share/cmake/qibuild/internal/tests.cmake
+d:/Python27/share/cmake/qibuild/install.cmake
+d:/Python27/share/cmake/qibuild/target.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeParseArguments.cmake
+d:/Python27/share/cmake/qibuild/submodule.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeParseArguments.cmake
+d:/Python27/share/cmake/qibuild/stage.cmake
+d:/Python27/share/cmake/qibuild/internal/stage.cmake
+c:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeParseArguments.cmake
+d:/Python27/share/cmake/qibuild/internal/uselib.cmake
+d:/Python27/share/cmake/qibuild/internal/list.cmake
+d:/Python27/share/cmake/qibuild/option.cmake
+d:/Python27/share/cmake/qibuild/codegen.cmake
+d:/Python27/share/cmake/qibuild/gettext.cmake

@@ -1,0 +1,21 @@
+﻿Build started 11.01.2014 21:23:33.
+     1>Project "d:\studies mannheim\my team project\GIT\teamproject-master\team-project\NAO_API\vs_project\build-sys-windows-amd64\test_VS_project.vcxproj" on node 3 (Build target(s)).
+     1>InitializeBuildStatus:
+         Creating "test_VS_project.dir\Debug\test_VS_project.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       CustomBuild:
+         Building Custom Rule d:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/CMakeLists.txt
+         CMake does not need to re-run because D:\studies Mannheim\My Team Project\GIT\TeamProject-master\Team-Project\NAO_API\VS_project\build-sys-windows-amd64\CMakeFiles\generate.stamp is up-to-date.
+       ClCompile:
+         D:\Visual Studio Ultimate 2012\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /Ob0 /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"test_VS_project.dir\Debug\\" /Fd"D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/sdk/bin/test_VS_project_d.pdb" /Gd /TP /errorReport:prompt  /Zm1000 ..\test.cpp
+         test.cpp
+       Link:
+         D:\Visual Studio Ultimate 2012\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\studies Mannheim\My Team Project\GIT\TeamProject-master\Team-Project\NAO_API\VS_project\build-sys-windows-amd64\sdk\bin\test_VS_project_d.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/sdk/bin/test_VS_project_d.pdb" /SUBSYSTEM:CONSOLE /STACK:"10000000" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/Debug/test_VS_project_d.lib" /MACHINE:X64  /machine:x64 /debug test_VS_project.dir\Debug\test.obj
+         test_VS_project.vcxproj -> D:\studies Mannheim\My Team Project\GIT\TeamProject-master\Team-Project\NAO_API\VS_project\build-sys-windows-amd64\sdk\bin\test_VS_project_d.exe
+       FinalizeBuildStatus:
+         Deleting file "test_VS_project.dir\Debug\test_VS_project.unsuccessfulbuild".
+         Touching "test_VS_project.dir\Debug\test_VS_project.lastbuildstate".
+     1>Done Building Project "d:\studies mannheim\my team project\GIT\teamproject-master\team-project\NAO_API\vs_project\build-sys-windows-amd64\test_VS_project.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.92
