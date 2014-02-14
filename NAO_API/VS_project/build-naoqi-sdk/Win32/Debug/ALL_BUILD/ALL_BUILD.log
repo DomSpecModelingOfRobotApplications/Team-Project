@@ -1,0 +1,16 @@
+﻿Build started 14.02.2014 15:13:28.
+     1>Project "d:\studies mannheim\my team project\GIT\teamproject-master\team-project\NAO_API\vs_project\build-naoqi-sdk\ALL_BUILD.vcxproj" on node 3 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Win32\Debug\ALL_BUILD\ALL_BUILD.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       CustomBuild:
+         Building Custom Rule d:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/CMakeLists.txt
+         CMake does not need to re-run because D:\studies Mannheim\My Team Project\GIT\TeamProject-master\Team-Project\NAO_API\VS_project\build-naoqi-sdk\CMakeFiles\generate.stamp is up-to-date.
+         Build all projects
+       FinalizeBuildStatus:
+         Deleting file "Win32\Debug\ALL_BUILD\ALL_BUILD.unsuccessfulbuild".
+         Touching "Win32\Debug\ALL_BUILD\ALL_BUILD.lastbuildstate".
+     1>Done Building Project "d:\studies mannheim\my team project\GIT\teamproject-master\team-project\NAO_API\vs_project\build-naoqi-sdk\ALL_BUILD.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.29
