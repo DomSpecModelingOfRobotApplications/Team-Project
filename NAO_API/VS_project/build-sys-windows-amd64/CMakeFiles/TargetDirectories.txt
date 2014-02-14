@@ -1,4 +1,0 @@
-D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/CMakeFiles/ALL_BUILD.dir
-D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/CMakeFiles/VS_project.dir
-D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/CMakeFiles/ZERO_CHECK.dir
-D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-sys-windows-amd64/CMakeFiles/test_VS_project.dir

@@ -1,4 +1,0 @@
-D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-naoqi-sdk/CMakeFiles/ALL_BUILD.dir
-D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-naoqi-sdk/CMakeFiles/ZERO_CHECK.dir
-D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-naoqi-sdk/CMakeFiles/helloworld.dir
-D:/studies Mannheim/My Team Project/GIT/TeamProject-master/Team-Project/NAO_API/VS_project/build-naoqi-sdk/CMakeFiles/testhelloworld.dir
