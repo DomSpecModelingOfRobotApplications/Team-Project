@@ -8,8 +8,7 @@
 using namespace AL;
 
 APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std::string& name):
-  ALModule(broker, name)
-{
+  ALModule(broker, name){
   /** Describe the module here. This will appear on the webpage*/
   setModuleDescription("An API demonstration module.");
 
@@ -48,25 +47,25 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
 
 APIDemonstration::~APIDemonstration() {}
 
-void APIDemonstration::init()
-{
-  /** Init is called just after construction.
-  *
-  * Here we call sayHello, so that the module does something
-  * without us having to explicitly call sayHello from somewhere else.
-  */
+void APIDemonstration::init(){
+  /** Init is called just after construction.**/
   different_postures();
 }
 
 void APIDemonstration::different_postures(){
 	 try{
-		AL::ALRobotPostureProxy robotPosture(getParentBroker());
+		ALRobotPostureProxy robotPosture(getParentBroker());
 		robotPosture.goToPosture("StandInit", 0.5f);
-		robotPosture.goToPosture("LyingBack", 0.5f);
+		robotPosture.goToPosture("StandZero", 0.5f);
 		robotPosture.goToPosture("Crouch", 0.5f);
-		}
+		robotPosture.goToPosture("Sit", 0.5f);
+		robotPosture.goToPosture("SitRelax", 0.5f);
+		robotPosture.goToPosture("LyingBelly", 0.5f);
+		robotPosture.goToPosture("LyingBack", 0.5f);
+		robotPosture.goToPosture("Stand", 0.5f);	
+	 }
 	catch(const AL::ALError&){
-		qiLogError("module.example") << "Could not get proxy to ALTextToSpeech" << std::endl;
+		qiLogError("module.example") << "Could not get proxy to ALRobotPostureProxy" << std::endl;
 		}
 	qiLogInfo("module.example") << "Done !" << std::endl;
 }

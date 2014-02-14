@@ -11,8 +11,7 @@
 #include <alcommon/alproxy.h>
 
 int main(int argc, char* argv[]) {
-  if(argc != 2)
-  {
+  if(argc != 2){
     std::cerr << "Wrong number of arguments!" << std::endl;
     std::cerr << "Usage: testapidemonstration NAO_IP" << std::endl;
     exit(2);
