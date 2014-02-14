@@ -27,6 +27,8 @@ class APIDemonstration : public AL::ALModule
     * This is called right after the module has been loaded
     */
     virtual void init();
+	
+	void different_postures();
 
 
 };

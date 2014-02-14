@@ -3,7 +3,7 @@
 #include <iostream>
 #include <alcommon/albroker.h>
 #include <qi/log.hpp>
-#include <alproxies/altexttospeechproxy.h>
+#include <alproxies/alrobotpostureproxy.h>
 
 using namespace AL;
 
@@ -19,8 +19,8 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
   * The name given will be the one visible from outside the module.
   * This method has no parameters or return value to describe
   */
-//  functionName("sayHello", getName(), "Say hello to the world");
-// BIND_METHOD(HelloWorld::sayHello);
+  functionName("different_postures", getName(), "Different postures");
+  BIND_METHOD(APIDemonstration::different_postures);
 
 //  functionName("sayText", getName(), "Say a given sentence.");
   /**
@@ -55,6 +55,18 @@ void APIDemonstration::init()
   * Here we call sayHello, so that the module does something
   * without us having to explicitly call sayHello from somewhere else.
   */
-//  sayHello();
+  different_postures();
 }
 
+void APIDemonstration::different_postures(){
+	 try{
+		AL::ALRobotPostureProxy robotPosture(getParentBroker());
+		robotPosture.goToPosture("StandInit", 0.5f);
+		robotPosture.goToPosture("LyingBack", 0.5f);
+		robotPosture.goToPosture("Crouch", 0.5f);
+		}
+	catch(const AL::ALError&){
+		qiLogError("module.example") << "Could not get proxy to ALTextToSpeech" << std::endl;
+		}
+	qiLogInfo("module.example") << "Done !" << std::endl;
+}

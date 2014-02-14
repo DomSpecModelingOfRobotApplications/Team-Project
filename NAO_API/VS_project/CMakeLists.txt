@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 2.6.4 FATAL_ERROR)
+
+cmake_minimum_required(VERSION 2.6.4 FATAL_ERROR)
 
 # Define the name of the project
 project(apidemonstration)
@@ -20,15 +21,15 @@ set(_srcs
   main.cpp
 )
 
-if(HAPIDEMONSTRATION_IS_REMOTE)
+if(APIDEMONSTRATION_IS_REMOTE)
   # Add a compile flag because code changes a little bit
   # when we are compiling an executable
   # This will let you use #ifdef APIDEMONSTRATION_IS_REMOTE
   # in the C++ code
-  add_definitions( " -DAPIDEMONTRATION_IS_REMOTE ")
+  add_definitions( " -DAPIDEMONSTRATION_IS_REMOTE ")
 
   # Create an executable
-  qi_create_bin(apidemontration ${_srcs})
+  qi_create_bin(apidemonstration ${_srcs})
 else()
   # Create a plugin, that is a shared library, and make
   # sure it is built in lib/naoqi, so that the naoqi executable
@@ -36,7 +37,7 @@ else()
   qi_create_lib(apidemonstration SHARED ${_srcs} SUBFOLDER naoqi)
 endif()
 
-# Tell CMake that apidemontration depends on ALCOMMON.
+# Tell CMake that apidemonstration depends on ALCOMMON.
 # This will set the libraries to link apidemonstration with,
 # the include paths, and so on
 qi_use_lib(apidemonstration ALCOMMON)
