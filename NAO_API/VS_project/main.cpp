@@ -1,6 +1,3 @@
-/**
- * Copyright (c) 2010 Aldebaran Robotics
- */
 
 #ifndef _WIN32
 # include <signal.h>
@@ -9,9 +6,9 @@
 #include <alcommon/albroker.h>
 #include <alcommon/albrokermanager.h>
 #include <alcommon/altoolsmain.h>
-#include "helloworld.h"
+#include "apidemonstration.h"
 
-#ifdef HELLOWORLD_IS_REMOTE
+#ifdef APIDEMONSTRATION_IS_REMOTE
 # define ALCALL
 #else
 // when not remote, we're in a dll, so export the entry point
@@ -31,7 +28,7 @@ extern "C"
     AL::ALBrokerManager::setInstance(pBroker->fBrokerManager.lock());
     AL::ALBrokerManager::getInstance()->addBroker(pBroker);
     // create module instances
-    AL::ALModule::createModule<HelloWorld>(pBroker, "HelloWorld");
+    AL::ALModule::createModule<APIDemonstration>(pBroker, "APIDemonstration");
     return 0;
   }
 
@@ -42,13 +39,13 @@ extern "C"
 } // extern "C"
 
 
-#ifdef HELLOWORLD_IS_REMOTE
+#ifdef APIDEMONSTRATION_IS_REMOTE
   int main(int argc, char *argv[])
   {
     // pointer to createModule
     TMainType sig;
     sig = &_createModule;
     // call main
-    return ALTools::mainFunction("HelloWorld", argc, argv, sig);
+    return ALTools::mainFunction("APIDemonstration", argc, argv, sig);
   }
 #endif
