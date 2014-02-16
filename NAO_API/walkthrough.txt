@@ -1,0 +1,26 @@
+﻿Ensure:
+CMake version 2.8.3
+Python 2.7
+Visual Studio 2010
+
+	python ez_setup.py
+	setuptools install pip
+	pip install qibuild
+
+Extract naoqi-sdk-1.14.5-win32-vs2010.zip in /path/to/cpp/sdk/
+	qibuild config --wizard
+For the CMake generator, choose ‘Unix Makefiles’ on Linux and Mac, or ‘Visual Studio 9 2008’ or ‘Visual Studio 10’ on Windows. (Note: do not choose the 64 bits version for Visual Studio)
+For the IDE, it is advised to use ‘Visual Studio’ on Windows and QtCreator on Linux and Mac
+
+
+	qibuild init [--interactive]
+	qitoolchain create mytoolchain /path/to/cpp/sdk/toolchain.xml --default
+[qisrc create foo]
+[cd foo]  - or add project name after each command
+	qibuild configure
+	qibuild make
+	qibuild open
+
+If something goes wrong:
+	qibuild config
+	qitoolchain info
