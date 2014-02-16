@@ -27,6 +27,11 @@ class APIDemonstration : public AL::ALModule {
 
         void show_postures();
         void move_basic();
-        bool move_navigation(float dist);
+        /** IMPORTANT: 
+        * If you want to make a method publicly available
+        * through BIND_METHOD, all arguments should be typed
+        * according to "const T&".
+        */
+        bool move_navigation(const float& dist);
 };
 #endif // APIDEMONSTRATION_H

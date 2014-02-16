@@ -26,15 +26,15 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
     functionName("move_basic", getName(), "Nao walks 2 metres.");
     BIND_METHOD(APIDemonstration::move_basic);
 
-    //functionName("move_navigation", getName(),
-    //            "Nao walks given distance or stops before an obstacle.");
-    //addParam("dist", "The distance to walk.");
+    functionName("move_navigation", getName(),
+                "Nao walks given distance or stops before an obstacle.");
+    addParam("dist", "The distance to walk.");
     ///**
     //* This enables to document the return of the method.
     //* It is not compulsory to write this line.
     //*/
-    //setReturn("obstacle_met", "Is true if Nao encountered an obstacle.");
-    //BIND_METHOD(APIDemonstration::move_navigation);
+    setReturn("obstacle_met", "Is true if Nao encountered an obstacle.");
+    BIND_METHOD(APIDemonstration::move_navigation);
 
     // If you had other methods, you could bind them here...
     /** Bound methods can only take const ref arguments of basic types,
@@ -77,7 +77,7 @@ void APIDemonstration::move_basic() {
     motion.moveTo(2.0f, 0.0f, 0.0f, ALValue::array(ALValue::array("MaxStepX", 0.2f)));
 }
 
-bool APIDemonstration::move_navigation(float dist) {
+bool APIDemonstration::move_navigation(const float& dist) {
     ALRobotPostureProxy robotPosture(getParentBroker());
     robotPosture.goToPosture("StandInit", 1.0);
 
