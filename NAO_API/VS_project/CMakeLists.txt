@@ -39,9 +39,9 @@ endif()
 # Tell CMake that apidemonstration depends on ALCOMMON.
 # This will set the libraries to link apidemonstration with,
 # the include paths, and so on
-qi_use_lib(apidemonstration ALCOMMON)
+qi_use_lib(apidemonstration ALCOMMON ALVISION OPENCV2_CORE OPENCV2_HIGHGUI)
 
 # Also create a simple executable capable of creating
 # a proxy to the apidemonstration module
 qi_create_bin(testapidemonstration testapidemonstration.cpp)
-qi_use_lib(testapidemonstration ALCOMMON ALVISION)
+qi_use_lib(testapidemonstration ALCOMMON)

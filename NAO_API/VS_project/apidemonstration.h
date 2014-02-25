@@ -3,6 +3,11 @@
 
 #include <boost/shared_ptr.hpp>
 #include <alcommon/almodule.h>
+#include <string>
+
+#include <alproxies/almemoryproxy.h>
+#include <alproxies/altexttospeechproxy.h>
+#include <althread/almutex.h>
 
 namespace AL {
     // This is a forward declaration of AL:ALBroker which
@@ -15,26 +20,37 @@ namespace AL {
  * and be run as a remote executable or as a plugin within NAOqi
  */
 class APIDemonstration : public AL::ALModule {
-    public:
-        APIDemonstration(boost::shared_ptr<AL::ALBroker> pBroker, const std::string& pName);
+public:
+    APIDemonstration(boost::shared_ptr<AL::ALBroker> pBroker, const std::string& pName);
 
-        virtual ~APIDemonstration();
+    virtual ~APIDemonstration();
 
-        /** Overloading ALModule::init().
-        * This is called right after the module has been loaded
-        */
-        virtual void init();
+    /** Overloading ALModule::init().
+    * This is called right after the module has been loaded
+    */
+    virtual void init();
 
-        void show_postures();
-        void move_basic();
-        /** IMPORTANT: 
-        * If you want to make a method publicly available
-        * through BIND_METHOD, all arguments should be typed
-        * according to "const T&".
-        */
-        bool move_navigation(const float& dist);
-        void take_picture(const std::string& filename);
-        void disagree();
-        void say_phrase(const std::string& phrase, const std::string& language = "English");
+    void show_postures();
+    void move_basic();
+    /** IMPORTANT: 
+    * If you want to make a method publicly available
+    * through BIND_METHOD, all arguments should be typed
+    * according to "const T&".
+    */
+    bool move_navigation(const float& dist);
+    void take_picture(const std::string& filename);
+    void disagree();
+    void say_phrase(const std::string& phrase, const std::string& language = "English");
+    void on_right_bumper_pressed();
+    void subscribe_to_event();
+    void unsubscribe_to_event();
+    void onRightBumperPressed();
+    void get_visual();
+
+private:
+    AL::ALMemoryProxy memory_proxy;
+    AL::ALTextToSpeechProxy TTS_proxy;
+
+    boost::shared_ptr<AL::ALMutex> fCallbackMutex;
 };
 #endif // APIDEMONSTRATION_H
