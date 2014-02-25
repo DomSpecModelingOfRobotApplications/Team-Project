@@ -33,5 +33,8 @@ class APIDemonstration : public AL::ALModule {
         * according to "const T&".
         */
         bool move_navigation(const float& dist);
+        void take_picture(const std::string& filename);
+        void disagree();
+        void say_phrase(const std::string& phrase, const std::string& language = "English");
 };
 #endif // APIDEMONSTRATION_H

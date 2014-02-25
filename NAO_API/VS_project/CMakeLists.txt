@@ -44,4 +44,4 @@ qi_use_lib(apidemonstration ALCOMMON)
 # Also create a simple executable capable of creating
 # a proxy to the apidemonstration module
 qi_create_bin(testapidemonstration testapidemonstration.cpp)
-qi_use_lib(testapidemonstration ALCOMMON)
+qi_use_lib(testapidemonstration ALCOMMON ALVISION)
