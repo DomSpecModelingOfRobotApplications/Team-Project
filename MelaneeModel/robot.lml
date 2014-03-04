@@ -22,7 +22,7 @@
           <attributes>visualizersShown= default</attributes>
           <attributes>completness= default</attributes>
         </visualizer>
-        <content xmi:type="PLM:Entity" xmi:id="_flkHgJYvEeOhjpu65D91-A" name="MetaRobot" potency="2">
+        <content xmi:type="PLM:Entity" xmi:id="_flkHgJYvEeOhjpu65D91-A" name="MetaRobot" potency="3">
           <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_flkHgZYvEeOhjpu65D91-A">
             <attributes>name= default</attributes>
             <attributes>expressed= default</attributes>
@@ -39,6 +39,19 @@
             <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
           </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_KUFitKN8EeO0T-_fTSf0-w" name="ipAddress" durability="3" mutability="3">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_KUFitaN8EeO0T-_fTSf0-w">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
         </content>
         <content xmi:type="PLM:Entity" xmi:id="_gibYYJYvEeOhjpu65D91-A" name="Part" potency="2">
           <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_gibYYZYvEeOhjpu65D91-A">
@@ -149,7 +162,7 @@
           <attributes>visualizersShown= default</attributes>
           <attributes>completness= default</attributes>
         </visualizer>
-        <content xmi:type="PLM:Entity" xmi:id="_qjktMJYvEeOhjpu65D91-A" name="Robot">
+        <content xmi:type="PLM:Entity" xmi:id="_qjktMJYvEeOhjpu65D91-A" name="Robot" potency="2">
           <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_qjlUQJYvEeOhjpu65D91-A">
             <attributes>name= default</attributes>
             <attributes>expressed= default</attributes>
@@ -166,6 +179,19 @@
             <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
           </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_KUFisKN8EeO0T-_fTSf0-w" name="ipAddress" durability="2" mutability="2">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_KUFisaN8EeO0T-_fTSf0-w">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
         </content>
         <content xmi:type="PLM:Classification" xmi:id="_qjnJcJYvEeOhjpu65D91-A" instance="_qjktMJYvEeOhjpu65D91-A" type="_flkHgJYvEeOhjpu65D91-A"/>
         <content xmi:type="PLM:Entity" xmi:id="_rq9MAJYvEeOhjpu65D91-A" name="Sensor">
@@ -301,7 +327,7 @@
           <attributes>visualizersShown= default</attributes>
           <attributes>completness= default</attributes>
         </visualizer>
-        <content xmi:type="PLM:Entity" xmi:id="_Ujhg8JYwEeOhjpu65D91-A" name="NaoRobot" potency="0">
+        <content xmi:type="PLM:Entity" xmi:id="_Ujhg8JYwEeOhjpu65D91-A" name="NaoRobot">
           <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_UjjWIJYwEeOhjpu65D91-A">
             <attributes>name= default</attributes>
             <attributes>expressed= default</attributes>
@@ -318,27 +344,21 @@
             <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
           </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_EU6OgKN8EeO0T-_fTSf0-w" name="ipAddress" durability="1" mutability="1" datatype="String">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_EU7coKN8EeO0T-_fTSf0-w">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
         </content>
         <content xmi:type="PLM:Classification" xmi:id="_UjjWIZYwEeOhjpu65D91-A" instance="_Ujhg8JYwEeOhjpu65D91-A" type="_qjktMJYvEeOhjpu65D91-A"/>
-        <content xmi:type="PLM:Entity" xmi:id="_YTkEEJYwEeOhjpu65D91-A" name="NaoLeg" potency="0">
-          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_YTkrIJYwEeOhjpu65D91-A">
-            <attributes>name= default</attributes>
-            <attributes>expressed= default</attributes>
-            <attributes>relevant= default</attributes>
-            <attributes>fix= default</attributes>
-            <attributes>elided= default</attributes>
-            <attributes>origin= default</attributes>
-            <attributes>visualizersShown= default</attributes>
-            <attributes>completness= default</attributes>
-            <attributes>instantiable= default</attributes>
-            <attributes>potency= default</attributes>
-            <attributes>levelIndex= default</attributes>
-            <attributes>ProximityClassification= 1</attributes>
-            <attributes>DSLRendering= false</attributes>
-            <attributes>ProximityIndication= name:1</attributes>
-          </visualizer>
-        </content>
-        <content xmi:type="PLM:Classification" xmi:id="_YTkrIZYwEeOhjpu65D91-A" instance="_YTkEEJYwEeOhjpu65D91-A" type="_sj3xAJYvEeOhjpu65D91-A"/>
         <content xmi:type="PLM:Entity" xmi:id="_e6LLsJYwEeOhjpu65D91-A" name="NaoContainer" potency="-1">
           <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_e6MZ0ZYwEeOhjpu65D91-A">
             <attributes>name= default</attributes>
@@ -388,63 +408,6 @@
           <attributes>visualizersShown= default</attributes>
           <attributes>completness= default</attributes>
         </visualizer>
-        <content xmi:type="PLM:Entity" xmi:id="_WdG4wJYwEeOhjpu65D91-A" name="Naomi" potency="-1">
-          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_WdIG4ZYwEeOhjpu65D91-A">
-            <attributes>name= default</attributes>
-            <attributes>expressed= default</attributes>
-            <attributes>relevant= default</attributes>
-            <attributes>fix= default</attributes>
-            <attributes>elided= default</attributes>
-            <attributes>origin= default</attributes>
-            <attributes>visualizersShown= default</attributes>
-            <attributes>completness= default</attributes>
-            <attributes>instantiable= default</attributes>
-            <attributes>potency= default</attributes>
-            <attributes>levelIndex= default</attributes>
-            <attributes>ProximityClassification= 1</attributes>
-            <attributes>DSLRendering= false</attributes>
-            <attributes>ProximityIndication= name:1</attributes>
-          </visualizer>
-        </content>
-        <content xmi:type="PLM:Classification" xmi:id="_WdIt8JYwEeOhjpu65D91-A" instance="_WdG4wJYwEeOhjpu65D91-A" type="_Ujhg8JYwEeOhjpu65D91-A"/>
-        <content xmi:type="PLM:Entity" xmi:id="_afqvQJYwEeOhjpu65D91-A" name="LeftLeg" potency="-1">
-          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_afr9YJYwEeOhjpu65D91-A">
-            <attributes>name= default</attributes>
-            <attributes>expressed= default</attributes>
-            <attributes>relevant= default</attributes>
-            <attributes>fix= default</attributes>
-            <attributes>elided= default</attributes>
-            <attributes>origin= default</attributes>
-            <attributes>visualizersShown= default</attributes>
-            <attributes>completness= default</attributes>
-            <attributes>instantiable= default</attributes>
-            <attributes>potency= default</attributes>
-            <attributes>levelIndex= default</attributes>
-            <attributes>ProximityClassification= 1</attributes>
-            <attributes>DSLRendering= false</attributes>
-            <attributes>ProximityIndication= name:1</attributes>
-          </visualizer>
-        </content>
-        <content xmi:type="PLM:Classification" xmi:id="_afr9YZYwEeOhjpu65D91-A" instance="_afqvQJYwEeOhjpu65D91-A" type="_YTkEEJYwEeOhjpu65D91-A"/>
-        <content xmi:type="PLM:Entity" xmi:id="_bS-bgJYwEeOhjpu65D91-A" name="RightLeg" potency="-1">
-          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_bS_CkJYwEeOhjpu65D91-A">
-            <attributes>name= default</attributes>
-            <attributes>expressed= default</attributes>
-            <attributes>relevant= default</attributes>
-            <attributes>fix= default</attributes>
-            <attributes>elided= default</attributes>
-            <attributes>origin= default</attributes>
-            <attributes>visualizersShown= default</attributes>
-            <attributes>completness= default</attributes>
-            <attributes>instantiable= default</attributes>
-            <attributes>potency= default</attributes>
-            <attributes>levelIndex= default</attributes>
-            <attributes>ProximityClassification= 1</attributes>
-            <attributes>DSLRendering= false</attributes>
-            <attributes>ProximityIndication= name:1</attributes>
-          </visualizer>
-        </content>
-        <content xmi:type="PLM:Classification" xmi:id="_bS_CkZYwEeOhjpu65D91-A" instance="_bS-bgJYwEeOhjpu65D91-A" type="_YTkEEJYwEeOhjpu65D91-A"/>
         <content xmi:type="PLM:Entity" xmi:id="_iDP1cJYwEeOhjpu65D91-A" name="DemoProgram" potency="-1">
           <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_iDQcgJYwEeOhjpu65D91-A">
             <attributes>name= default</attributes>
@@ -502,6 +465,38 @@
           </visualizer>
         </content>
         <content xmi:type="PLM:Classification" xmi:id="_k3wkcZYwEeOhjpu65D91-A" instance="_k3v9YJYwEeOhjpu65D91-A" type="_gbFk0JYwEeOhjpu65D91-A"/>
+        <content xmi:type="PLM:Entity" xmi:id="_cUVcEKN8EeO0T-_fTSf0-w" name="Naomi" potency="0">
+          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_cUX4UKN8EeO0T-_fTSf0-w">
+            <attributes>name= default</attributes>
+            <attributes>expressed= default</attributes>
+            <attributes>relevant= default</attributes>
+            <attributes>fix= default</attributes>
+            <attributes>elided= default</attributes>
+            <attributes>origin= default</attributes>
+            <attributes>visualizersShown= default</attributes>
+            <attributes>completness= default</attributes>
+            <attributes>instantiable= default</attributes>
+            <attributes>potency= default</attributes>
+            <attributes>levelIndex= default</attributes>
+            <attributes>ProximityClassification= 1</attributes>
+            <attributes>DSLRendering= false</attributes>
+            <attributes>ProximityIndication= name:1</attributes>
+          </visualizer>
+          <feature xmi:type="PLM:Attribute" xmi:id="_cUYfYKN8EeO0T-_fTSf0-w" name="ipAddress" value="192.168.1.1" datatype="String">
+            <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_cUZGcKN8EeO0T-_fTSf0-w">
+              <attributes>name= default</attributes>
+              <attributes>expressed= default</attributes>
+              <attributes>relevant= default</attributes>
+              <attributes>fix= default</attributes>
+              <attributes>elided= default</attributes>
+              <attributes>durability= default</attributes>
+              <attributes>value= default</attributes>
+              <attributes>mutability= default</attributes>
+              <attributes>datatype= default</attributes>
+            </visualizer>
+          </feature>
+        </content>
+        <content xmi:type="PLM:Classification" xmi:id="_cUZGcaN8EeO0T-_fTSf0-w" instance="_cUVcEKN8EeO0T-_fTSf0-w" type="_Ujhg8JYwEeOhjpu65D91-A"/>
       </content>
     </ontologies>
   </PLM:Domain>
@@ -886,7 +881,15 @@
                 <styles xmi:type="notation:DescriptionStyle" xmi:id="_UjkkQZYwEeOhjpu65D91-A"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_UjkkQpYwEeOhjpu65D91-A" y="5"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_UjkkQ5YwEeOhjpu65D91-A" visible="false" type="7058">
+              <children xmi:type="notation:BasicCompartment" xmi:id="_UjkkQ5YwEeOhjpu65D91-A" type="7058">
+                <children xmi:type="notation:Shape" xmi:id="_KWMbgKN8EeO0T-_fTSf0-w" type="3106" element="_EU6OgKN8EeO0T-_fTSf0-w" fontName="Lucida Grande">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_KWNCkKN8EeO0T-_fTSf0-w" type="5269"/>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_KWNCkaN8EeO0T-_fTSf0-w" type="5270"/>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_KWNCkqN8EeO0T-_fTSf0-w" type="5271"/>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_KWNpoKN8EeO0T-_fTSf0-w" type="5272"/>
+                  <children xmi:type="notation:DecorationNode" xmi:id="_KWNpoaN8EeO0T-_fTSf0-w" type="5273"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KWMbgaN8EeO0T-_fTSf0-w"/>
+                </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_UjkkRJYwEeOhjpu65D91-A"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_UjkkRZYwEeOhjpu65D91-A"/>
               </children>
@@ -899,32 +902,6 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_Ujj9MpYwEeOhjpu65D91-A" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_Ujj9M5YwEeOhjpu65D91-A"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ujj9NJYwEeOhjpu65D91-A" x="159" y="4"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_YTlSMJYwEeOhjpu65D91-A" type="3120" element="_YTkEEJYwEeOhjpu65D91-A">
-              <children xmi:type="notation:DecorationNode" xmi:id="_YTlSNZYwEeOhjpu65D91-A" type="5314"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_YTlSNpYwEeOhjpu65D91-A" type="5315"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_YTlSN5YwEeOhjpu65D91-A" type="5316"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_YTlSOJYwEeOhjpu65D91-A" type="5317"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_YTl5QJYwEeOhjpu65D91-A" type="5318">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_YTl5QZYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:DecorationNode" xmi:id="_YTl5QpYwEeOhjpu65D91-A" type="5319">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_YTl5Q5YwEeOhjpu65D91-A"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_YTl5RJYwEeOhjpu65D91-A" y="5"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_YTl5RZYwEeOhjpu65D91-A" visible="false" type="7058">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_YTl5RpYwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_YTl5R5YwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_YTl5SJYwEeOhjpu65D91-A" visible="false" type="7059">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_YTl5SZYwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_YTl5SpYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_YTl5S5YwEeOhjpu65D91-A" visible="false" type="7060"/>
-              <styles xmi:type="notation:DescriptionStyle" xmi:id="_YTlSMZYwEeOhjpu65D91-A"/>
-              <styles xmi:type="notation:FontStyle" xmi:id="_YTlSMpYwEeOhjpu65D91-A" fontName="Segoe UI"/>
-              <styles xmi:type="notation:FillStyle" xmi:id="_YTlSM5YwEeOhjpu65D91-A"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YTlSNJYwEeOhjpu65D91-A" x="169" y="89"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_e6Nn8JYwEeOhjpu65D91-A" type="3120" element="_e6LLsJYwEeOhjpu65D91-A">
               <children xmi:type="notation:DecorationNode" xmi:id="_e6Nn9ZYwEeOhjpu65D91-A" type="5314"/>
@@ -985,84 +962,6 @@
           <children xmi:type="notation:DecorationNode" xmi:id="_9jIHcpYvEeOhjpu65D91-A" type="5320"/>
           <children xmi:type="notation:DecorationNode" xmi:id="_9jIHc5YvEeOhjpu65D91-A" type="5321"/>
           <children xmi:type="notation:BasicCompartment" xmi:id="_9jIHdJYvEeOhjpu65D91-A" type="7046">
-            <children xmi:type="notation:Node" xmi:id="_WdJVAJYwEeOhjpu65D91-A" type="3120" element="_WdG4wJYwEeOhjpu65D91-A">
-              <children xmi:type="notation:DecorationNode" xmi:id="_WdJVBZYwEeOhjpu65D91-A" type="5314"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_WdJVBpYwEeOhjpu65D91-A" type="5315"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_WdJVB5YwEeOhjpu65D91-A" type="5316"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_WdJVCJYwEeOhjpu65D91-A" type="5317"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_WdJVCZYwEeOhjpu65D91-A" type="5318">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_WdJVCpYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:DecorationNode" xmi:id="_WdJVC5YwEeOhjpu65D91-A" type="5319">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_WdJVDJYwEeOhjpu65D91-A"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_WdJVDZYwEeOhjpu65D91-A" y="5"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_WdJVDpYwEeOhjpu65D91-A" visible="false" type="7058">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_WdJ8EJYwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_WdJ8EZYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_WdJ8EpYwEeOhjpu65D91-A" visible="false" type="7059">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_WdJ8E5YwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_WdJ8FJYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_WdJ8FZYwEeOhjpu65D91-A" visible="false" type="7060"/>
-              <styles xmi:type="notation:DescriptionStyle" xmi:id="_WdJVAZYwEeOhjpu65D91-A"/>
-              <styles xmi:type="notation:FontStyle" xmi:id="_WdJVApYwEeOhjpu65D91-A" fontName="Segoe UI"/>
-              <styles xmi:type="notation:FillStyle" xmi:id="_WdJVA5YwEeOhjpu65D91-A"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WdJVBJYwEeOhjpu65D91-A" x="154"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_afskcJYwEeOhjpu65D91-A" type="3120" element="_afqvQJYwEeOhjpu65D91-A">
-              <children xmi:type="notation:DecorationNode" xmi:id="_afskdZYwEeOhjpu65D91-A" type="5314"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_aftLgJYwEeOhjpu65D91-A" type="5315"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_aftLgZYwEeOhjpu65D91-A" type="5316"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_aftLgpYwEeOhjpu65D91-A" type="5317"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_aftLg5YwEeOhjpu65D91-A" type="5318">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_aftLhJYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:DecorationNode" xmi:id="_aftLhZYwEeOhjpu65D91-A" type="5319">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_aftLhpYwEeOhjpu65D91-A"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_aftLh5YwEeOhjpu65D91-A" y="5"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_aftLiJYwEeOhjpu65D91-A" visible="false" type="7058">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_aftLiZYwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_aftLipYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_aftLi5YwEeOhjpu65D91-A" visible="false" type="7059">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_aftLjJYwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_aftLjZYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_aftLjpYwEeOhjpu65D91-A" visible="false" type="7060"/>
-              <styles xmi:type="notation:DescriptionStyle" xmi:id="_afskcZYwEeOhjpu65D91-A"/>
-              <styles xmi:type="notation:FontStyle" xmi:id="_afskcpYwEeOhjpu65D91-A" fontName="Segoe UI"/>
-              <styles xmi:type="notation:FillStyle" xmi:id="_afskc5YwEeOhjpu65D91-A"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_afskdJYwEeOhjpu65D91-A" x="69" y="82"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_bS_poJYwEeOhjpu65D91-A" type="3120" element="_bS-bgJYwEeOhjpu65D91-A">
-              <children xmi:type="notation:DecorationNode" xmi:id="_bS_ppZYwEeOhjpu65D91-A" type="5314"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_bS_pppYwEeOhjpu65D91-A" type="5315"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_bS_pp5YwEeOhjpu65D91-A" type="5316"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_bS_pqJYwEeOhjpu65D91-A" type="5317"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_bS_pqZYwEeOhjpu65D91-A" type="5318">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_bS_pqpYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:DecorationNode" xmi:id="_bS_pq5YwEeOhjpu65D91-A" type="5319">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_bS_prJYwEeOhjpu65D91-A"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_bS_prZYwEeOhjpu65D91-A" y="5"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_bS_prpYwEeOhjpu65D91-A" visible="false" type="7058">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_bS_pr5YwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_bS_psJYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_bS_psZYwEeOhjpu65D91-A" visible="false" type="7059">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_bS_pspYwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_bS_ps5YwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_bS_ptJYwEeOhjpu65D91-A" visible="false" type="7060"/>
-              <styles xmi:type="notation:DescriptionStyle" xmi:id="_bS_poZYwEeOhjpu65D91-A"/>
-              <styles xmi:type="notation:FontStyle" xmi:id="_bS_popYwEeOhjpu65D91-A" fontName="Segoe UI"/>
-              <styles xmi:type="notation:FillStyle" xmi:id="_bS_po5YwEeOhjpu65D91-A"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bS_ppJYwEeOhjpu65D91-A" x="254" y="82"/>
-            </children>
             <children xmi:type="notation:Node" xmi:id="_iDRDkJYwEeOhjpu65D91-A" type="3120" element="_iDP1cJYwEeOhjpu65D91-A">
               <children xmi:type="notation:DecorationNode" xmi:id="_iDRDlZYwEeOhjpu65D91-A" type="5314"/>
               <children xmi:type="notation:DecorationNode" xmi:id="_iDRDlpYwEeOhjpu65D91-A" type="5315"/>
@@ -1140,6 +1039,32 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_k3xLgpYwEeOhjpu65D91-A" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_k3xLg5YwEeOhjpu65D91-A"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k3xLhJYwEeOhjpu65D91-A" x="834" y="87"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_cUbisKN8EeO0T-_fTSf0-w" type="3120" element="_cUVcEKN8EeO0T-_fTSf0-w">
+              <children xmi:type="notation:DecorationNode" xmi:id="_cUbitaN8EeO0T-_fTSf0-w" type="5314"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_cUbitqN8EeO0T-_fTSf0-w" type="5315"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_cUbit6N8EeO0T-_fTSf0-w" type="5316"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_cUbiuKN8EeO0T-_fTSf0-w" type="5317"/>
+              <children xmi:type="notation:DecorationNode" xmi:id="_cUbiuaN8EeO0T-_fTSf0-w" type="5318">
+                <styles xmi:type="notation:DescriptionStyle" xmi:id="_cUcJwKN8EeO0T-_fTSf0-w"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="_cUcJwaN8EeO0T-_fTSf0-w" type="5319">
+                <styles xmi:type="notation:DescriptionStyle" xmi:id="_cUcJwqN8EeO0T-_fTSf0-w"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_cUcJw6N8EeO0T-_fTSf0-w" y="5"/>
+              </children>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_cUcJxKN8EeO0T-_fTSf0-w" type="7058">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_cUcJxaN8EeO0T-_fTSf0-w"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_cUcJxqN8EeO0T-_fTSf0-w"/>
+              </children>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_cUcJx6N8EeO0T-_fTSf0-w" visible="false" type="7059">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_cUcJyKN8EeO0T-_fTSf0-w"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_cUcJyaN8EeO0T-_fTSf0-w"/>
+              </children>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_cUcJyqN8EeO0T-_fTSf0-w" visible="false" type="7060"/>
+              <styles xmi:type="notation:DescriptionStyle" xmi:id="_cUbisaN8EeO0T-_fTSf0-w"/>
+              <styles xmi:type="notation:FontStyle" xmi:id="_cUbisqN8EeO0T-_fTSf0-w" fontName="Lucida Grande"/>
+              <styles xmi:type="notation:FillStyle" xmi:id="_cUbis6N8EeO0T-_fTSf0-w"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cUbitKN8EeO0T-_fTSf0-w" x="140" y="36"/>
             </children>
           </children>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9jIHcZYvEeOhjpu65D91-A" y="644" width="1061" height="200"/>
