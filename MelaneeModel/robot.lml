@@ -446,25 +446,6 @@
           </visualizer>
         </content>
         <content xmi:type="PLM:Classification" xmi:id="_jr-t0JYwEeOhjpu65D91-A" instance="_jr-GwJYwEeOhjpu65D91-A" type="_gbFk0JYwEeOhjpu65D91-A"/>
-        <content xmi:type="PLM:Entity" xmi:id="_k3v9YJYwEeOhjpu65D91-A" name="MoveB" potency="-1">
-          <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_k3wkcJYwEeOhjpu65D91-A">
-            <attributes>name= default</attributes>
-            <attributes>expressed= default</attributes>
-            <attributes>relevant= default</attributes>
-            <attributes>fix= default</attributes>
-            <attributes>elided= default</attributes>
-            <attributes>origin= default</attributes>
-            <attributes>visualizersShown= default</attributes>
-            <attributes>completness= default</attributes>
-            <attributes>instantiable= default</attributes>
-            <attributes>potency= default</attributes>
-            <attributes>levelIndex= default</attributes>
-            <attributes>ProximityClassification= 1</attributes>
-            <attributes>DSLRendering= false</attributes>
-            <attributes>ProximityIndication= name:1</attributes>
-          </visualizer>
-        </content>
-        <content xmi:type="PLM:Classification" xmi:id="_k3wkcZYwEeOhjpu65D91-A" instance="_k3v9YJYwEeOhjpu65D91-A" type="_gbFk0JYwEeOhjpu65D91-A"/>
         <content xmi:type="PLM:Entity" xmi:id="_cUVcEKN8EeO0T-_fTSf0-w" name="Naomi" potency="0">
           <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_cUX4UKN8EeO0T-_fTSf0-w">
             <attributes>name= default</attributes>
@@ -1012,33 +993,7 @@
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_jsBxIZYwEeOhjpu65D91-A"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_jsBxIpYwEeOhjpu65D91-A" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_jsBxI5YwEeOhjpu65D91-A"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jsBxJJYwEeOhjpu65D91-A" x="694" y="87"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_k3xLgJYwEeOhjpu65D91-A" type="3120" element="_k3v9YJYwEeOhjpu65D91-A">
-              <children xmi:type="notation:DecorationNode" xmi:id="_k3xLhZYwEeOhjpu65D91-A" type="5314"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_k3xLhpYwEeOhjpu65D91-A" type="5315"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_k3xLh5YwEeOhjpu65D91-A" type="5316"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_k3xLiJYwEeOhjpu65D91-A" type="5317"/>
-              <children xmi:type="notation:DecorationNode" xmi:id="_k3xLiZYwEeOhjpu65D91-A" type="5318">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_k3xLipYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:DecorationNode" xmi:id="_k3xykJYwEeOhjpu65D91-A" type="5319">
-                <styles xmi:type="notation:DescriptionStyle" xmi:id="_k3xykZYwEeOhjpu65D91-A"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_k3xykpYwEeOhjpu65D91-A" y="5"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_k3xyk5YwEeOhjpu65D91-A" visible="false" type="7058">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_k3xylJYwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_k3xylZYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_k3xylpYwEeOhjpu65D91-A" visible="false" type="7059">
-                <styles xmi:type="notation:SortingStyle" xmi:id="_k3xyl5YwEeOhjpu65D91-A"/>
-                <styles xmi:type="notation:FilteringStyle" xmi:id="_k3xymJYwEeOhjpu65D91-A"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_k3xymZYwEeOhjpu65D91-A" visible="false" type="7060"/>
-              <styles xmi:type="notation:DescriptionStyle" xmi:id="_k3xLgZYwEeOhjpu65D91-A"/>
-              <styles xmi:type="notation:FontStyle" xmi:id="_k3xLgpYwEeOhjpu65D91-A" fontName="Segoe UI"/>
-              <styles xmi:type="notation:FillStyle" xmi:id="_k3xLg5YwEeOhjpu65D91-A"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_k3xLhJYwEeOhjpu65D91-A" x="834" y="87"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jsBxJJYwEeOhjpu65D91-A" x="776" y="84"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_cUbisKN8EeO0T-_fTSf0-w" type="3120" element="_cUVcEKN8EeO0T-_fTSf0-w">
               <children xmi:type="notation:DecorationNode" xmi:id="_cUbitaN8EeO0T-_fTSf0-w" type="5314"/>
