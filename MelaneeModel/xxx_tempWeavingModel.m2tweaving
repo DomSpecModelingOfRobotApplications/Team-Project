@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<M2TWeaving:WeavingModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:M2TWeaving="http://melanee.org/M2TWeaving" xmlns:PLM="http://melanee.org/PLM">
+  <links>
+    <modelElement xsi:type="PLM:Level" href="robot.lml#_9g554JYvEeOhjpu65D91-A"/>
+    <children xsi:type="M2TWeaving:WeavingLink">
+      <modelElement xsi:type="PLM:Entity" href="robot.lml#_cUVcEKN8EeO0T-_fTSf0-w"/>
+      <children xsi:type="M2TWeaving:TextElement" length="15" text="Test with Naomi"/>
+    </children>
+  </links>
+</M2TWeaving:WeavingModel>
