@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:PLM="http://melanee.org/PLM" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:textdef="http://melanee.org/textdef">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:PLM="http://melanee.org/PLM" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
   <PLM:Domain xmi:id="_j0UcYJYuEeORlPnJTqVX6A">
     <ontologies xmi:type="PLM:DeepModel" xmi:id="_cQoMAJYvEeOhjpu65D91-A" name="Robot">
       <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_cQr2YJYvEeOhjpu65D91-A">
@@ -388,9 +388,6 @@
           <attributes>origin= default</attributes>
           <attributes>visualizersShown= default</attributes>
           <attributes>completness= default</attributes>
-          <dslVisualizer xmi:type="textdef:TextualDSLVisualizer" xmi:id="_XvE2IKd3EeOxvZxJ6r2I1w" root="_cUVcEKN8EeO0T-_fTSf0-w">
-            <content xmi:type="textdef:Literal" xmi:id="_6eEkwKd3EeOxvZxJ6r2I1w" expression="Test Level o3"/>
-          </dslVisualizer>
         </visualizer>
         <content xmi:type="PLM:Entity" xmi:id="_iDP1cJYwEeOhjpu65D91-A" name="DemoProgram" potency="-1">
           <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_iDQcgJYwEeOhjpu65D91-A">
@@ -408,9 +405,6 @@
             <attributes>ProximityClassification= 1</attributes>
             <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
-            <dslVisualizer xmi:type="textdef:TextualDSLVisualizer" xmi:id="_z8Al8Kd3EeOxvZxJ6r2I1w" root="_cUVcEKN8EeO0T-_fTSf0-w">
-              <content xmi:type="textdef:Literal" xmi:id="_0myoUKd3EeOxvZxJ6r2I1w" expression="Test DemoProgram"/>
-            </dslVisualizer>
           </visualizer>
           <feature xmi:type="PLM:Attribute" xmi:id="_zdaa5Kd2EeO4MvYMStlFTA" name="x">
             <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_zdaa5ad2EeO4MvYMStlFTA">
@@ -443,9 +437,6 @@
             <attributes>ProximityClassification= 1</attributes>
             <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
-            <dslVisualizer xmi:type="textdef:TextualDSLVisualizer" xmi:id="_mdlR8Kd3EeOxvZxJ6r2I1w">
-              <content xmi:type="textdef:Literal" xmi:id="_oEC5cKd3EeOxvZxJ6r2I1w" expression="Test with Naomi"/>
-            </dslVisualizer>
           </visualizer>
           <feature xmi:type="PLM:Attribute" xmi:id="_cUYfYKN8EeO0T-_fTSf0-w" name="ipAddress" value="192.168.1.1" datatype="String">
             <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_cUZGcKN8EeO0T-_fTSf0-w">
@@ -476,11 +467,8 @@
             <attributes>potency= default</attributes>
             <attributes>levelIndex= default</attributes>
             <attributes>ProximityClassification= 1</attributes>
-            <attributes>DSLRendering= true</attributes>
+            <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
-            <dslVisualizer xmi:type="textdef:TextualDSLVisualizer" xmi:id="_vqMygKd3EeOxvZxJ6r2I1w" root="_iDP1cJYwEeOhjpu65D91-A">
-              <content xmi:type="textdef:Literal" xmi:id="_wWge4Kd3EeOxvZxJ6r2I1w" expression="Test MoveA"/>
-            </dslVisualizer>
           </visualizer>
           <feature xmi:type="PLM:Attribute" xmi:id="_6kPToad2EeO4MvYMStlFTA" name="x" value="10" datatype="Integer">
             <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_6kZEoKd2EeO4MvYMStlFTA">
@@ -702,7 +690,7 @@
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_qjnwgZYvEeOhjpu65D91-A"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_qjnwgpYvEeOhjpu65D91-A" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_qjnwg5YvEeOhjpu65D91-A"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qjnwhJYvEeOhjpu65D91-A" x="2" y="1"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qjnwhJYvEeOhjpu65D91-A" x="174"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_tqFyMJYvEeOhjpu65D91-A" type="3120" element="_tqEkEJYvEeOhjpu65D91-A">
               <children xmi:type="notation:DecorationNode" xmi:id="_tqGZQJYvEeOhjpu65D91-A" type="5314"/>
@@ -795,7 +783,7 @@
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_Ujj9MZYwEeOhjpu65D91-A"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_Ujj9MpYwEeOhjpu65D91-A" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_Ujj9M5YwEeOhjpu65D91-A"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ujj9NJYwEeOhjpu65D91-A" x="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ujj9NJYwEeOhjpu65D91-A" x="159" y="4"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_e6Nn8JYwEeOhjpu65D91-A" type="3120" element="_e6LLsJYwEeOhjpu65D91-A">
               <children xmi:type="notation:DecorationNode" xmi:id="_e6Nn9ZYwEeOhjpu65D91-A" type="5314"/>
@@ -914,7 +902,7 @@
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_cUbisaN8EeO0T-_fTSf0-w"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_cUbisqN8EeO0T-_fTSf0-w" fontName="Lucida Grande"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_cUbis6N8EeO0T-_fTSf0-w"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cUbitKN8EeO0T-_fTSf0-w" x="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cUbitKN8EeO0T-_fTSf0-w" x="140" y="36"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_6kZEoqd2EeO4MvYMStlFTA" type="3120" element="_6kGJsKd2EeO4MvYMStlFTA">
               <children xmi:type="notation:DecorationNode" xmi:id="_6kZEp6d2EeO4MvYMStlFTA" type="5314"/>
