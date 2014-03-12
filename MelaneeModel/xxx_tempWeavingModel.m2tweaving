@@ -1,34 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
 <M2TWeaving:WeavingModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:M2TWeaving="http://melanee.org/M2TWeaving" xmlns:PLM="http://melanee.org/PLM">
   <links>
-    <modelElement xsi:type="PLM:Level" href="robot.lml#_9g554JYvEeOhjpu65D91-A"/>
+    <modelElement xsi:type="PLM:Level" href="robot.lml#_ovMlgJYvEeOhjpu65D91-A"/>
     <children xsi:type="M2TWeaving:WeavingLink">
-      <modelElement xsi:type="PLM:Entity" href="robot.lml#_cUVcEKN8EeO0T-_fTSf0-w"/>
-      <children xsi:type="M2TWeaving:TextElement" length="9" text="robot(ip:"/>
-      <children xsi:type="M2TWeaving:WeavingLink">
-        <modelElement xsi:type="PLM:Attribute" href="robot.lml#_cUYfYKN8EeO0T-_fTSf0-w"/>
-        <children xsi:type="M2TWeaving:TextElement" offset="9" length="12" text="192.168.1.19"/>
-      </children>
-      <children xsi:type="M2TWeaving:TextElement" offset="21" length="4" text="){&#xD;&#xA;"/>
-      <children xsi:type="M2TWeaving:WeavingLink">
-        <modelElement xsi:type="PLM:Entity" href="robot.lml#_6kGJsKd2EeO4MvYMStlFTA"/>
-        <children xsi:type="M2TWeaving:TextElement" offset="25" length="3" text="mv("/>
-        <children xsi:type="M2TWeaving:WeavingLink">
-          <modelElement xsi:type="PLM:Attribute" href="robot.lml#_6kPToad2EeO4MvYMStlFTA"/>
-          <children xsi:type="M2TWeaving:TextElement" offset="28" length="2" text="10"/>
-        </children>
-        <children xsi:type="M2TWeaving:TextElement" offset="30" length="4" text=");&#xD;&#xA;"/>
-      </children>
-      <children xsi:type="M2TWeaving:WeavingLink">
-        <modelElement xsi:type="PLM:Entity" href="robot.lml#_IPYRQKhkEeO-8ZcYb3pbBg"/>
-        <children xsi:type="M2TWeaving:TextElement" offset="34" length="3" text="mv("/>
-        <children xsi:type="M2TWeaving:WeavingLink">
-          <modelElement xsi:type="PLM:Attribute" href="robot.lml#_IQazEKhkEeO-8ZcYb3pbBg"/>
-          <children xsi:type="M2TWeaving:TextElement" offset="37" length="2" text="15"/>
-        </children>
-        <children xsi:type="M2TWeaving:TextElement" offset="39" length="4" text=");&#xD;&#xA;"/>
-      </children>
-      <children xsi:type="M2TWeaving:TextElement" offset="43" length="1" text="}"/>
+      <modelElement xsi:type="PLM:Entity" href="robot.lml#_posrcKnaEeOlPv7Y0h2tFg"/>
+      <children xsi:type="M2TWeaving:TextElement" length="4" text="Test"/>
     </children>
   </links>
 </M2TWeaving:WeavingModel>
