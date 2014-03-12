@@ -7,6 +7,11 @@
 
 #include <alproxies/almemoryproxy.h>
 #include <alproxies/altexttospeechproxy.h>
+#include <alproxies/almotionproxy.h>
+#include <alproxies/alnavigationproxy.h>
+#include <alproxies/alphotocaptureproxy.h>
+#include <alproxies/alrobotpostureproxy.h>
+#include <alproxies/alvideodeviceproxy.h>
 #include <althread/almutex.h>
 
 namespace AL {
@@ -38,8 +43,12 @@ public:
     * according to "const T&".
     */
     bool move_navigation(const float& dist);
+    void rest();
+    void wake_up();
+    void posture(const std::string& posture_name);
     void take_picture(const std::string& filename);
     void disagree();
+    void agree();
     void say_phrase(const std::string& phrase, const std::string& language = "English");
     void on_right_bumper_pressed();
     void subscribe_to_event();
@@ -47,9 +56,20 @@ public:
     void onRightBumperPressed();
     void get_visual();
 
+    void not_these_droids();
+
+    void script();
+
 private:
-    AL::ALMemoryProxy memory_proxy;
+    AL::ALMemoryProxy       memory_proxy;
     AL::ALTextToSpeechProxy TTS_proxy;
+    AL::ALRobotPostureProxy posture_proxy;
+    AL::ALMotionProxy       motion_proxy;
+    AL::ALNavigationProxy   navigation_proxy;
+    //AL::ALPhotoCaptureProxy photo_proxy;
+    AL::ALVideoDeviceProxy  video_proxy;
+
+    float haste;
 
     boost::shared_ptr<AL::ALMutex> fCallbackMutex;
 };

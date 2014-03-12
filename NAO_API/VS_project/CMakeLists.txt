@@ -18,6 +18,7 @@ set(_srcs
   apidemonstration.cpp
   apidemonstration.h
   main.cpp
+  script.cpp
 )
 
 if(APIDEMONSTRATION_IS_REMOTE)

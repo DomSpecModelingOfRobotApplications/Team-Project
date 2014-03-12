@@ -2,19 +2,16 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include <alcommon/albroker.h>
 #include <alerror/alerror.h>
-#include <alproxies/almotionproxy.h>
-#include <alproxies/alnavigationproxy.h>
-#include <alproxies/alphotocaptureproxy.h>
-#include <alproxies/alrobotpostureproxy.h>
-#include <alproxies/alvideodeviceproxy.h>
 #include <althread/alcriticalsection.h>
 #include <alvalue/alvalue.h>
 #include <alvision/alimage.h>
 #include <alvision/alvisiondefinitions.h>
 #include <qi/log.hpp>
+#include <qi/os.hpp>
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -70,64 +67,108 @@ void APIDemonstration::init() {
     /** Init is called just after construction.**/
     try {
         memory_proxy = ALMemoryProxy(getParentBroker());
+    }
+    catch(const AL::ALError&) {
+        qiLogError("module.example") << "Memory proxy initialization failed." << std::endl;
+    }
+    try {
         TTS_proxy = ALTextToSpeechProxy(getParentBroker());
     }
     catch(const AL::ALError&) {
-        qiLogError("module.example") << "Proxy initialization failed." << std::endl;
+        qiLogError("module.example") << "TTS proxy initialization failed." << std::endl;
     }
-    //show_postures();
-    //move_navigation(1.0);
-    take_picture("lol");
-    //disagree();
-    //say_phrase("Here we go!", "English");
-    //say_phrase("Bonjour! Un, deux, trois, Je ne sais pas", "French");
-    //subscribe_to_event();
-    //get_visual();
+    try {
+        navigation_proxy = ALNavigationProxy(getParentBroker());
+    }
+    catch(const AL::ALError&) {
+        qiLogError("module.example") << "Navigation proxy initialization failed." << std::endl;
+    }
+    try {
+        video_proxy = ALVideoDeviceProxy(getParentBroker());
+    }
+    catch(const AL::ALError&) {
+        qiLogError("module.example") << "Video initialization failed." << std::endl;
+    }
+    qiLogInfo("module.example") << "Initialization complete!" << std::endl;
+    haste = 0.7f;
+    script();
+}
+
+void APIDemonstration::rest() {
+    posture_proxy.goToPosture("Crouch", haste);
+    motion_proxy.rest();
+}
+
+void APIDemonstration::wake_up() {
+    motion_proxy.wakeUp();
+    posture_proxy.goToPosture("StandInit", haste);
 }
 
 void APIDemonstration::show_postures() {
-    try {
-        ALRobotPostureProxy robotPosture(getParentBroker());
-        robotPosture.goToPosture("StandInit", 0.5f);
-        robotPosture.goToPosture("StandZero", 0.5f);
-        robotPosture.goToPosture("Crouch", 0.5f);
-        robotPosture.goToPosture("Sit", 0.5f);
-        robotPosture.goToPosture("SitRelax", 0.5f);
-        robotPosture.goToPosture("LyingBelly", 0.5f);
-        robotPosture.goToPosture("LyingBack", 0.5f);
-        robotPosture.goToPosture("Stand", 0.5f);
-    }
-    catch(const AL::ALError&) {
-        qiLogError("module.example") << "Could not get proxy to ALRobotPostureProxy" << std::endl;
-    }
+    posture_proxy.goToPosture("StandInit", haste);
+    posture_proxy.goToPosture("StandZero", haste);
+    posture_proxy.goToPosture("Crouch", haste);
+    posture_proxy.goToPosture("Sit", haste);
+    posture_proxy.goToPosture("SitRelax", haste);
+    posture_proxy.goToPosture("LyingBelly", haste);
+    posture_proxy.goToPosture("LyingBack", haste);
+    posture_proxy.goToPosture("Stand", haste);
     qiLogInfo("module.example") << "Done !" << std::endl;
 }
 
-void APIDemonstration::move_basic() {
-    ALRobotPostureProxy robotPosture(getParentBroker());
-    robotPosture.goToPosture("StandInit", 1.0);
+void APIDemonstration::posture(const std::string& posture_name) {
+    std::string known_postures[] = {
+        "Sit", 
+        "SitRelax",
+        "Stand",
+        "StandInit",
+        "StandZero",
+        "Crouch",
+        "LyingBelly",
+        "LyingBack"
+    };
+    for (int i = 0; i < 8; ++i)
+        if (known_postures[i] == posture_name) {
+            posture_proxy.goToPosture(posture_name, haste);
+            return;
+        }
+    qiLogInfo("module.example") << "Unknown posture!" << std::endl;
+}
 
-    ALMotionProxy motion(getParentBroker());
-    motion.moveInit();
-    motion.moveTo(2.0f, 0.0f, 0.0f, ALValue::array(ALValue::array("MaxStepX", 0.2f)));
+void APIDemonstration::move_basic() {
+    posture_proxy.goToPosture("StandInit", 1.0);
+
+    
+    motion_proxy.moveInit();
+    motion_proxy.moveTo(2.0f, 0.0f, 0.0f, ALValue::array(ALValue::array("MaxStepX", 0.2f)));
 }
 
 bool APIDemonstration::move_navigation(const float& dist) {
-    ALRobotPostureProxy robotPosture(getParentBroker());
-    robotPosture.goToPosture("StandInit", 1.0);
+    posture_proxy.goToPosture("StandInit", 1.0);
 
-    ALNavigationProxy motion(getParentBroker());
-    bool obstacle_met = !motion.moveTo(dist, 0.0, 0);
+    bool obstacle_met = !navigation_proxy.moveTo(dist, 0.0, 0);
     std::cout << (obstacle_met ? "Met an obstacle" : "Navigation complete") << std::endl;
     return obstacle_met;
 }
 
 void APIDemonstration::take_picture(const std::string& filename) {
+    /** HINT: 
+    * Webots does not have this module and the programm crashes if
+    * this photo_proxy is declared as a static variable.
+    */
+    AL::ALPhotoCaptureProxy photo_proxy;
+    try {
+        ALPhotoCaptureProxy photo_proxy = ALPhotoCaptureProxy(getParentBroker());
+    }
+    catch(const AL::ALError&) {
+        qiLogError("module.example") << "Photo proxy initialization failed." << std::endl;
+    }
+
     const std::string folderPath = "/home/nao/recordings/cameras/";
     const std:: string fileName = filename + ".jpg";
-    ALPhotoCaptureProxy cam_proxy(getParentBroker());
+    
     try {
-        AL::ALValue ret = cam_proxy.takePicture(folderPath, fileName);
+        AL::ALValue ret = photo_proxy.takePicture(folderPath, fileName);
         std::cout << ret << std::endl;
     }
     catch(const ALError& e) {
@@ -139,20 +180,40 @@ void APIDemonstration::disagree()
 {
     const AL::ALValue jointName = "HeadYaw";
     try {
-        ALMotionProxy motion(getParentBroker());
-
         AL::ALValue stiffness = 1.0f;
         AL::ALValue time = 1.0f;
-        motion.stiffnessInterpolation(jointName, stiffness, time);
+        motion_proxy.stiffnessInterpolation(jointName, stiffness, time);
 
         AL::ALValue targetAngles = AL::ALValue::array(-1.5f, 1.5f, 0.0f);
         AL::ALValue targetTimes = AL::ALValue::array(3.0f, 6.0f, 9.0f);
         bool isAbsolute = true;
-        motion.angleInterpolation(jointName, targetAngles, targetTimes, isAbsolute);
+        motion_proxy.angleInterpolation(jointName, targetAngles, targetTimes, isAbsolute);
 
         stiffness = 0.0f;
         time = 1.0f;
-        motion.stiffnessInterpolation(jointName, stiffness, time);
+        motion_proxy.stiffnessInterpolation(jointName, stiffness, time);
+    }
+    catch (const AL::ALError& e) {
+        std::cerr << "Caught exception: " << e.what() << std::endl;
+    }
+}
+
+void APIDemonstration::agree()
+{
+    const AL::ALValue jointName = "HeadPitch";
+    try {
+        AL::ALValue stiffness = 1.0f;
+        AL::ALValue time = 1.0f;
+        motion_proxy.stiffnessInterpolation(jointName, stiffness, time);
+
+        AL::ALValue targetAngles = AL::ALValue::array(-1.5f, 1.5f, 0.0f);
+        AL::ALValue targetTimes = AL::ALValue::array(3.0f, 6.0f, 9.0f);
+        bool isAbsolute = true;
+        motion_proxy.angleInterpolation(jointName, targetAngles, targetTimes, isAbsolute);
+
+        stiffness = 0.0f;
+        time = 1.0f;
+        motion_proxy.stiffnessInterpolation(jointName, stiffness, time);
     }
     catch (const AL::ALError& e) {
         std::cerr << "Caught exception: " << e.what() << std::endl;
@@ -216,8 +277,7 @@ void APIDemonstration::onRightBumperPressed() {
 }
 
 void APIDemonstration::get_visual() {
-    ALVideoDeviceProxy cam_proxy(getParentBroker());
-    const std::string clientName = cam_proxy.subscribe("test", kQVGA, kBGRColorSpace, 30);
+    const std::string clientName = video_proxy.subscribe("test", kQVGA, kBGRColorSpace, 30);
 
     cv::Mat imgHeader = cv::Mat(cv::Size(320, 240), CV_8UC3);
     cv::namedWindow("images");
@@ -236,20 +296,67 @@ void APIDemonstration::get_visual() {
         * 5 = time stamp (micro seconds)
         * 6 = image buffer (size of width * height * number of layers)
         */
-        ALValue img = cam_proxy.getImageRemote(clientName);
+        try {
+            ALValue img = video_proxy.getImageRemote(clientName);
 
-        /** Access the image buffer (6th field) and assign it to the opencv image
-        * container. */
-        imgHeader.data = (uchar*) img[6].GetBinary();
+            /** Access the image buffer (6th field) and assign it to the opencv image
+            * container. */
+            imgHeader.data = (uchar*) img[6].GetBinary();
 
-        /** Tells to ALVideoDevice that it can give back the image buffer to the
-        * driver. Optional after a getImageRemote but MANDATORY after a getImageLocal.*/
-        cam_proxy.releaseImage(clientName);
+            /** Tells to ALVideoDevice that it can give back the image buffer to the
+            * driver. Optional after a getImageRemote but MANDATORY after a getImageLocal.*/
+            video_proxy.releaseImage(clientName);
 
-        /** Display the iplImage on screen.*/
-        cv::imshow("images", imgHeader);
+            /** Display the iplImage on screen.*/
+            cv::imshow("images", imgHeader);
+        }
+        catch (const AL::ALError& e) {
+            qiLogError("module.example") << e.what() << std::endl;
+        }
     }
 
     /** Cleanup.*/
-    cam_proxy.unsubscribe(clientName);
+    cv::destroyWindow("images");
+    video_proxy.unsubscribe(clientName);
+}
+
+void APIDemonstration::not_these_droids() {
+    AL::ALValue joints = AL::ALValue::array(
+        "LShoulderPitch", 
+        "LElbowRoll", 
+        "LElbowYaw", 
+        "LWristYaw",
+        "LHand"
+    );
+
+    bool useSensors = false;
+    std::vector<float> command_angles = motion_proxy.getAngles(joints, useSensors);
+
+    motion_proxy.setStiffnesses(joints, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0));
+
+    TTS_proxy.setLanguage("English");
+    TTS_proxy.post.say("These aren't the droids you're looking for.");
+
+    AL::ALValue target_angles = AL::ALValue::array(
+        AL::ALValue::array(0.8, 1.0),
+        AL::ALValue::array(-1.5, -1.5),
+        AL::ALValue::array(-0.3, -1.5),
+        AL::ALValue::array(0.9, 1.4),
+        AL::ALValue::array(0.5, 0.8)
+    );
+    float time = 5.0;
+    AL::ALValue target_times = AL::ALValue::array(
+        AL::ALValue::array(1.0, time),
+        AL::ALValue::array(1.0, time),
+        AL::ALValue::array(1.0, time),
+        AL::ALValue::array(1.0, time),
+        AL::ALValue::array(1.0, time)
+    );
+    bool isAbsolute = true;
+    motion_proxy.angleInterpolation(joints, target_angles, target_times, isAbsolute);
+
+    //qi::os::sleep(1.0f);
+
+    motion_proxy.angleInterpolation(joints, command_angles, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0), true);
+    motion_proxy.setStiffnesses(joints, AL::ALValue::array(0.0, 0.0, 0.0, 0.0, 0.0));
 }
