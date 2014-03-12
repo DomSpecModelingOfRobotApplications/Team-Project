@@ -36,13 +36,13 @@ public:
     virtual void init();
 
     void show_postures();
-    void move_basic();
+    void move(const float& x, const float& y, const float& theta);
     /** IMPORTANT: 
     * If you want to make a method publicly available
     * through BIND_METHOD, all arguments should be typed
     * according to "const T&".
     */
-    bool move_navigation(const float& dist);
+    bool move_navigation(const float& x, const float& y, const float& theta);
     void rest();
     void wake_up();
     void posture(const std::string& posture_name);

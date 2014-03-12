@@ -32,8 +32,8 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
     functionName("show_postures", getName(), "Shows some postures.");
     BIND_METHOD(APIDemonstration::show_postures);
 
-    functionName("move_basic", getName(), "Nao walks 2 metres.");
-    BIND_METHOD(APIDemonstration::move_basic);
+    functionName("move", getName(), "Nao walks 2 metres.");
+    BIND_METHOD(APIDemonstration::move);
 
     functionName("move_navigation", getName(),
                 "Nao walks given distance or stops before an obstacle.");
@@ -135,18 +135,17 @@ void APIDemonstration::posture(const std::string& posture_name) {
     qiLogInfo("module.example") << "Unknown posture!" << std::endl;
 }
 
-void APIDemonstration::move_basic() {
+void APIDemonstration::move(const float& x, const float& y, const float& theta) {
     posture_proxy.goToPosture("StandInit", 1.0);
 
-    
     motion_proxy.moveInit();
-    motion_proxy.moveTo(2.0f, 0.0f, 0.0f, ALValue::array(ALValue::array("MaxStepX", 0.2f)));
+    motion_proxy.moveTo(x, y, theta, ALValue::array(ALValue::array("MaxStepX", 0.2f)));
 }
 
-bool APIDemonstration::move_navigation(const float& dist) {
+bool APIDemonstration::move_navigation(const float& x, const float& y, const float& theta) {
     posture_proxy.goToPosture("StandInit", 1.0);
 
-    bool obstacle_met = !navigation_proxy.moveTo(dist, 0.0, 0);
+    bool obstacle_met = !navigation_proxy.moveTo(x, y, theta);
     std::cout << (obstacle_met ? "Met an obstacle" : "Navigation complete") << std::endl;
     return obstacle_met;
 }
