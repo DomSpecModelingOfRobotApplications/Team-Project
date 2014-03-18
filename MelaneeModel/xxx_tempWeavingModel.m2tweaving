@@ -47,14 +47,8 @@
             <children xsi:type="M2TWeaving:WeavingLink">
               <modelElement xsi:type="PLM:Attribute" href="robot.lml#_XTguYK5wEeOkrq5zxpBIGw"/>
               <children xsi:type="M2TWeaving:TextElement" offset="67" length="14" text="Hi wie geht's?"/>
-              <children xsi:type="M2TWeaving:TextElement" offset="81" length="14" text="Hi wie geht's?"/>
-              <children xsi:type="M2TWeaving:TextElement" offset="95" length="14" text="Hi wie geht's?"/>
             </children>
-            <children xsi:type="M2TWeaving:TextElement" offset="109" length="4" text=");&#xD;&#xA;"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="113" length="8" text="posture("/>
-            <children xsi:type="M2TWeaving:TextElement" offset="121" length="4" text=");&#xD;&#xA;"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="125" length="8" text="posture("/>
-            <children xsi:type="M2TWeaving:TextElement" offset="133" length="4" text=");&#xD;&#xA;"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="81" length="4" text=");&#xD;&#xA;"/>
           </children>
         </children>
       </children>
