@@ -205,7 +205,7 @@ void APIDemonstration::agree()
         AL::ALValue time = 1.0f;
         motion_proxy.stiffnessInterpolation(jointName, stiffness, time);
 
-        AL::ALValue targetAngles = AL::ALValue::array(-1.5f, 1.5f, 0.0f);
+        AL::ALValue targetAngles = AL::ALValue::array(-0.5f, 1.5f, 0.0f);
         AL::ALValue targetTimes = AL::ALValue::array(3.0f, 6.0f, 9.0f);
         bool isAbsolute = true;
         motion_proxy.angleInterpolation(jointName, targetAngles, targetTimes, isAbsolute);
@@ -329,7 +329,8 @@ void APIDemonstration::not_these_droids() {
     );
 
     bool useSensors = false;
-    std::vector<float> command_angles = motion_proxy.getAngles(joints, useSensors);
+    std::vector<float> angles_before = motion_proxy.getAngles(joints, useSensors);
+    std::vector<float> stiffness_before = motion_proxy.getStiffnesses(joints);
 
     motion_proxy.setStiffnesses(joints, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0));
 
@@ -337,25 +338,25 @@ void APIDemonstration::not_these_droids() {
     TTS_proxy.post.say("These aren't the droids you're looking for.");
 
     AL::ALValue target_angles = AL::ALValue::array(
-        AL::ALValue::array(0.8, 1.0),
-        AL::ALValue::array(-1.5, -1.5),
-        AL::ALValue::array(-0.3, -1.5),
+        AL::ALValue::array(0.8, 0.5),
+        AL::ALValue::array(-1.3, -1.3),
+        AL::ALValue::array(-0.5, -1.5),
         AL::ALValue::array(0.9, 1.4),
         AL::ALValue::array(0.5, 0.8)
     );
     float time = 5.0;
     AL::ALValue target_times = AL::ALValue::array(
-        AL::ALValue::array(1.0, time),
-        AL::ALValue::array(1.0, time),
-        AL::ALValue::array(1.0, time),
-        AL::ALValue::array(1.0, time),
-        AL::ALValue::array(1.0, time)
+        AL::ALValue::array(2.0, time),
+        AL::ALValue::array(2.0, time),
+        AL::ALValue::array(2.0, time),
+        AL::ALValue::array(2.0, time),
+        AL::ALValue::array(2.0, time)
     );
     bool isAbsolute = true;
     motion_proxy.angleInterpolation(joints, target_angles, target_times, isAbsolute);
 
     //qi::os::sleep(1.0f);
 
-    motion_proxy.angleInterpolation(joints, command_angles, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0), true);
-    motion_proxy.setStiffnesses(joints, AL::ALValue::array(0.0, 0.0, 0.0, 0.0, 0.0));
+    motion_proxy.angleInterpolation(joints, angles_before, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0), true);
+    motion_proxy.setStiffnesses(joints, stiffness_before);
 }
