@@ -42,13 +42,38 @@
           </children>
           <children xsi:type="M2TWeaving:TextElement" offset="55" length="4" text=");&#xD;&#xA;"/>
           <children xsi:type="M2TWeaving:WeavingLink">
-            <modelElement xsi:type="PLM:Entity" href="robot.lml#_XTSE4K5wEeOkrq5zxpBIGw"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="59" length="8" text="posture("/>
+            <modelElement xsi:type="PLM:Entity" href="robot.lml#_Hq-TMLQWEeOy7YyPGLNp3g"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="59" length="3" text="if("/>
             <children xsi:type="M2TWeaving:WeavingLink">
-              <modelElement xsi:type="PLM:Attribute" href="robot.lml#_XTguYK5wEeOkrq5zxpBIGw"/>
-              <children xsi:type="M2TWeaving:TextElement" offset="67" length="14" text="Hi wie geht's?"/>
+              <modelElement xsi:type="PLM:Attribute" href="robot.lml#_HrROILQWEeOy7YyPGLNp3g"/>
+              <children xsi:type="M2TWeaving:TextElement" offset="62" length="3" text="x>5"/>
             </children>
-            <children xsi:type="M2TWeaving:TextElement" offset="81" length="4" text=");&#xD;&#xA;"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="65" length="4" text="){&#xD;&#xA;"/>
+            <children xsi:type="M2TWeaving:WeavingLink">
+              <modelElement xsi:type="PLM:Entity" href="robot.lml#_XTSE4K5wEeOkrq5zxpBIGw"/>
+              <children xsi:type="M2TWeaving:TextElement" offset="69" length="9" text="posture(&quot;"/>
+              <children xsi:type="M2TWeaving:WeavingLink">
+                <modelElement xsi:type="PLM:Attribute" href="robot.lml#_XTguYK5wEeOkrq5zxpBIGw"/>
+                <children xsi:type="M2TWeaving:TextElement" offset="78" length="5" text="Stand"/>
+                <children xsi:type="M2TWeaving:TextElement" offset="83" length="5" text="Stand"/>
+              </children>
+              <children xsi:type="M2TWeaving:TextElement" offset="88" length="5" text="&quot;);&#xD;&#xA;"/>
+              <children xsi:type="M2TWeaving:TextElement" offset="93" length="9" text="posture(&quot;"/>
+              <children xsi:type="M2TWeaving:TextElement" offset="102" length="5" text="&quot;);&#xD;&#xA;"/>
+            </children>
+            <children xsi:type="M2TWeaving:WeavingLink">
+              <modelElement xsi:type="PLM:Entity" href="robot.lml#_ptogQLQWEeOy7YyPGLNp3g"/>
+              <children xsi:type="M2TWeaving:TextElement" offset="107" length="9" text="posture(&quot;"/>
+              <children xsi:type="M2TWeaving:WeavingLink">
+                <modelElement xsi:type="PLM:Attribute" href="robot.lml#_pt4-8LQWEeOy7YyPGLNp3g"/>
+                <children xsi:type="M2TWeaving:TextElement" offset="116" length="6" text="Crouch"/>
+                <children xsi:type="M2TWeaving:TextElement" offset="122" length="6" text="Crouch"/>
+              </children>
+              <children xsi:type="M2TWeaving:TextElement" offset="128" length="5" text="&quot;);&#xD;&#xA;"/>
+              <children xsi:type="M2TWeaving:TextElement" offset="133" length="9" text="posture(&quot;"/>
+              <children xsi:type="M2TWeaving:TextElement" offset="142" length="5" text="&quot;);&#xD;&#xA;"/>
+            </children>
+            <children xsi:type="M2TWeaving:TextElement" offset="147" length="3" text="}&#xD;&#xA;"/>
           </children>
         </children>
       </children>
