@@ -217,7 +217,7 @@
             <attributes>disjoint= default</attributes>
             <attributes>complete= default</attributes>
             <attributes>intersection= default</attributes>
-            <attributes>collapsed= false</attributes>
+            <attributes>collapsed= true</attributes>
           </visualizer>
           <supertype xmi:type="PLM:Supertype" xmi:id="_mbvZIK5tEeOkrq5zxpBIGw" supertype="_i9yEgK5tEeOkrq5zxpBIGw"/>
           <subtype xmi:type="PLM:Subtype" xmi:id="_oJGS0K5tEeOkrq5zxpBIGw" subtype="_fevAMK5sEeOkrq5zxpBIGw"/>
@@ -1214,7 +1214,7 @@
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_kyBpUa5tEeOkrq5zxpBIGw"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_kyBpUq5tEeOkrq5zxpBIGw" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_kyBpU65tEeOkrq5zxpBIGw"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kyBpVK5tEeOkrq5zxpBIGw" x="453" y="143"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kyBpVK5tEeOkrq5zxpBIGw" x="532" y="169" width="8" height="8"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_qIWNwK5tEeOkrq5zxpBIGw" type="3099" element="_qIYC9K5tEeOkrq5zxpBIGw">
               <children xmi:type="notation:DecorationNode" xmi:id="_qIW00q5tEeOkrq5zxpBIGw" type="5294"/>
@@ -2263,7 +2263,7 @@
     <edges xmi:type="notation:Edge" xmi:id="_-jpQYLQXEeOF5eIt8z16Cw" type="4035" element="_-jgtgLQXEeOF5eIt8z16Cw" source="_kyBpUK5tEeOkrq5zxpBIGw" target="_d2gzQK5uEeOkrq5zxpBIGw">
       <styles xmi:type="notation:RoutingStyle" xmi:id="_-jpQYbQXEeOF5eIt8z16Cw" routing="Rectilinear"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_-jpQYrQXEeOF5eIt8z16Cw" fontName="Segoe UI"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-jpQY7QXEeOF5eIt8z16Cw" points="[0, 13, 155, -55]$[-157, 61, -2, -7]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-jpQY7QXEeOF5eIt8z16Cw" points="[-4, 0, 169, -34]$[-162, 0, 11, -34]$[-162, 27, 11, -7]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-jv-ELQXEeOF5eIt8z16Cw" id="WEST"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-jv-EbQXEeOF5eIt8z16Cw" id="(0.4318181818181818,0.175)"/>
     </edges>
