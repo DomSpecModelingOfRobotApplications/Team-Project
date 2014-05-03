@@ -52,6 +52,9 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
     functionName("onRightBumperPressed", getName(), "Method called when the right bumper is pressed. Makes Nao speak");
     BIND_METHOD(APIDemonstration::onRightBumperPressed);
 
+    functionName("reverence", getName(), "Makes a reverence");
+    BIND_METHOD(APIDemonstration::reverence);
+
     // If you had other methods, you could bind them here...
     /** Bound methods can only take const ref arguments of basic types,
     * or AL::ALValue or return basic types or an AL::ALValue.
@@ -357,6 +360,48 @@ void APIDemonstration::not_these_droids() {
 
     //qi::os::sleep(1.0f);
 
+    motion_proxy.angleInterpolation(joints, angles_before, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0), true);
+    motion_proxy.setStiffnesses(joints, stiffness_before);
+}
+
+void APIDemonstration::reverence() {
+    AL::ALValue joints = AL::ALValue::array(
+        "HeadPitch",
+        "LShoulderPitch", 
+        "LElbowRoll", 
+        "LElbowYaw",
+        "LHipYawPitch"
+    );
+
+    bool useSensors = false;
+    posture_proxy.goToPosture("Stand", haste);
+    std::vector<float> angles_before = motion_proxy.getAngles(joints, useSensors);
+    std::vector<float> stiffness_before = motion_proxy.getStiffnesses(joints);
+
+    motion_proxy.setStiffnesses(joints, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0));
+   
+    TTS_proxy.setLanguage("English");
+    TTS_proxy.post.say("Good evening.");
+
+    AL::ALValue target_angles = AL::ALValue::array(
+        AL::ALValue::array(0.5),
+        AL::ALValue::array(-0.04),
+        AL::ALValue::array(-1.3),
+        AL::ALValue::array(0.07),
+        AL::ALValue::array(-0.7)
+    );
+
+    float time = 5.0;
+    AL::ALValue target_times = AL::ALValue::array(
+        AL::ALValue::array(time),
+        AL::ALValue::array(time),
+        AL::ALValue::array(time),
+        AL::ALValue::array(time),
+        AL::ALValue::array(time)
+    );
+
+    bool isAbsolute = true;
+    motion_proxy.angleInterpolation(joints, target_angles, target_times, isAbsolute);
     motion_proxy.angleInterpolation(joints, angles_before, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0), true);
     motion_proxy.setStiffnesses(joints, stiffness_before);
 }

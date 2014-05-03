@@ -14,5 +14,6 @@ void APIDemonstration::script()
     //wake_up();
     //subscribe_to_event();
     //get_visual();
-    not_these_droids();
+    //not_these_droids();
+    reverence();
 }
