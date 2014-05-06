@@ -24,3 +24,5 @@ For the IDE, it is advised to use ‘Visual Studio’ on Windows and QtCreator o
 If something goes wrong:
 	qibuild config
 	qitoolchain info
+
+Toolchains are stored in ~/.config/qi/toolchains.cfg

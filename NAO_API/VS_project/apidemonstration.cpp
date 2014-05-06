@@ -52,8 +52,8 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
     functionName("onRightBumperPressed", getName(), "Method called when the right bumper is pressed. Makes Nao speak");
     BIND_METHOD(APIDemonstration::onRightBumperPressed);
 
-    functionName("reverence", getName(), "Makes a reverence");
-    BIND_METHOD(APIDemonstration::reverence);
+    functionName("bow", getName(), "Nao makes a bow");
+    BIND_METHOD(APIDemonstration::bow);
 
     // If you had other methods, you could bind them here...
     /** Bound methods can only take const ref arguments of basic types,
@@ -94,7 +94,12 @@ void APIDemonstration::init() {
     }
     qiLogInfo("module.example") << "Initialization complete!" << std::endl;
     haste = 0.7f;
-    script();
+    std::string repeat;
+    do {
+        script();
+        std::cout << "Enter y to repeat, n to exit" << std::endl;
+        std::cin >> repeat;
+    } while (repeat.find_first_of("Yy") != std::string::npos);
 }
 
 void APIDemonstration::rest() {
@@ -180,46 +185,18 @@ void APIDemonstration::take_picture(const std::string& filename) {
 
 void APIDemonstration::disagree()
 {
-    const AL::ALValue jointName = "HeadYaw";
-    try {
-        AL::ALValue stiffness = 1.0f;
-        AL::ALValue time = 1.0f;
-        motion_proxy.stiffnessInterpolation(jointName, stiffness, time);
-
-        AL::ALValue targetAngles = AL::ALValue::array(-1.5f, 1.5f, 0.0f);
-        AL::ALValue targetTimes = AL::ALValue::array(3.0f, 6.0f, 9.0f);
-        bool isAbsolute = true;
-        motion_proxy.angleInterpolation(jointName, targetAngles, targetTimes, isAbsolute);
-
-        stiffness = 0.0f;
-        time = 1.0f;
-        motion_proxy.stiffnessInterpolation(jointName, stiffness, time);
-    }
-    catch (const AL::ALError& e) {
-        std::cerr << "Caught exception: " << e.what() << std::endl;
-    }
+    move_joints("HeadYaw", 
+        AL::ALValue::array(-1.5f, 1.5f, 0.0f), 
+        AL::ALValue::array(3.0f, 6.0f, 9.0f)
+    );
 }
 
 void APIDemonstration::agree()
 {
-    const AL::ALValue jointName = "HeadPitch";
-    try {
-        AL::ALValue stiffness = 1.0f;
-        AL::ALValue time = 1.0f;
-        motion_proxy.stiffnessInterpolation(jointName, stiffness, time);
-
-        AL::ALValue targetAngles = AL::ALValue::array(-0.5f, 1.5f, 0.0f);
-        AL::ALValue targetTimes = AL::ALValue::array(3.0f, 6.0f, 9.0f);
-        bool isAbsolute = true;
-        motion_proxy.angleInterpolation(jointName, targetAngles, targetTimes, isAbsolute);
-
-        stiffness = 0.0f;
-        time = 1.0f;
-        motion_proxy.stiffnessInterpolation(jointName, stiffness, time);
-    }
-    catch (const AL::ALError& e) {
-        std::cerr << "Caught exception: " << e.what() << std::endl;
-    }
+    move_joints("HeadPitch", 
+        AL::ALValue::array(-0.5f, 1.5f, 0.0f), 
+        AL::ALValue::array(3.0f, 6.0f, 9.0f)
+   );
 }
 
 void APIDemonstration::say_phrase(const std::string& phrase, const std::string& language) {
@@ -322,25 +299,48 @@ void APIDemonstration::get_visual() {
     video_proxy.unsubscribe(clientName);
 }
 
+void APIDemonstration::move_joints(const AL::ALValue& joints,
+                                   const AL::ALValue& target_angles,
+                                   const AL::ALValue& target_times,
+                                   const bool &restore_pos,
+                                   const std::string& phrase,
+                                   const float& phrase_lag) {
+
+    try{
+        bool useSensors = false;
+        std::vector<float> angles_before = motion_proxy.getAngles(joints, useSensors);
+        std::vector<float> stiffness_before = motion_proxy.getStiffnesses(joints);
+
+        int n = joints.isArray() ? joints.getSize() : 1;
+        motion_proxy.setStiffnesses(joints, std::vector<float>(n, 1.0));
+        
+        bool isAbsolute = true;
+        motion_proxy.post.angleInterpolation(joints, target_angles, target_times, isAbsolute);
+
+        qi::os::sleep(phrase_lag);
+        if (phrase != "") {
+            TTS_proxy.setLanguage("English");
+            TTS_proxy.post.say(phrase);
+        }
+
+        if (restore_pos)
+            motion_proxy.angleInterpolation(joints, angles_before, std::vector<float>(n, 1.0), true);
+        motion_proxy.setStiffnesses(joints, stiffness_before);
+    }
+    catch (const AL::ALError& e) {
+        std::cerr << "Caught exception: " << e.what() << std::endl;
+    }
+}
+
 void APIDemonstration::not_these_droids() {
-    AL::ALValue joints = AL::ALValue::array(
+    AL::ALValue n = AL::ALValue::array(
         "LShoulderPitch", 
         "LElbowRoll", 
         "LElbowYaw", 
         "LWristYaw",
         "LHand"
     );
-
-    bool useSensors = false;
-    std::vector<float> angles_before = motion_proxy.getAngles(joints, useSensors);
-    std::vector<float> stiffness_before = motion_proxy.getStiffnesses(joints);
-
-    motion_proxy.setStiffnesses(joints, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0));
-
-    TTS_proxy.setLanguage("English");
-    TTS_proxy.post.say("These aren't the droids you're looking for.");
-
-    AL::ALValue target_angles = AL::ALValue::array(
+    AL::ALValue p = AL::ALValue::array(
         AL::ALValue::array(0.8, 0.5),
         AL::ALValue::array(-1.3, -1.3),
         AL::ALValue::array(-0.5, -1.5),
@@ -348,60 +348,39 @@ void APIDemonstration::not_these_droids() {
         AL::ALValue::array(0.5, 0.8)
     );
     float time = 5.0;
-    AL::ALValue target_times = AL::ALValue::array(
+    AL::ALValue t = AL::ALValue::array(
         AL::ALValue::array(2.0, time),
         AL::ALValue::array(2.0, time),
         AL::ALValue::array(2.0, time),
         AL::ALValue::array(2.0, time),
         AL::ALValue::array(2.0, time)
     );
-    bool isAbsolute = true;
-    motion_proxy.angleInterpolation(joints, target_angles, target_times, isAbsolute);
-
-    //qi::os::sleep(1.0f);
-
-    motion_proxy.angleInterpolation(joints, angles_before, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0), true);
-    motion_proxy.setStiffnesses(joints, stiffness_before);
+    move_joints(n, p, t, true, "These aren't the droids you're looking for.", 3);
 }
 
-void APIDemonstration::reverence() {
-    AL::ALValue joints = AL::ALValue::array(
+void APIDemonstration::bow() {
+    posture_proxy.goToPosture("Stand", haste);
+    AL::ALValue n = AL::ALValue::array(
         "HeadPitch",
         "LShoulderPitch", 
         "LElbowRoll", 
         "LElbowYaw",
         "LHipYawPitch"
     );
-
-    bool useSensors = false;
-    posture_proxy.goToPosture("Stand", haste);
-    std::vector<float> angles_before = motion_proxy.getAngles(joints, useSensors);
-    std::vector<float> stiffness_before = motion_proxy.getStiffnesses(joints);
-
-    motion_proxy.setStiffnesses(joints, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0));
-   
-    TTS_proxy.setLanguage("English");
-    TTS_proxy.post.say("Good evening.");
-
-    AL::ALValue target_angles = AL::ALValue::array(
+    AL::ALValue p = AL::ALValue::array(
         AL::ALValue::array(0.5),
         AL::ALValue::array(-0.04),
         AL::ALValue::array(-1.3),
         AL::ALValue::array(0.07),
         AL::ALValue::array(-0.7)
     );
-
     float time = 5.0;
-    AL::ALValue target_times = AL::ALValue::array(
+    AL::ALValue t = AL::ALValue::array(
         AL::ALValue::array(time),
         AL::ALValue::array(time),
         AL::ALValue::array(time),
         AL::ALValue::array(time),
         AL::ALValue::array(time)
     );
-
-    bool isAbsolute = true;
-    motion_proxy.angleInterpolation(joints, target_angles, target_times, isAbsolute);
-    motion_proxy.angleInterpolation(joints, angles_before, AL::ALValue::array(1.0, 1.0, 1.0, 1.0, 1.0), true);
-    motion_proxy.setStiffnesses(joints, stiffness_before);
+    move_joints(n, p, t, true, "Good afternoon!", 2);
 }

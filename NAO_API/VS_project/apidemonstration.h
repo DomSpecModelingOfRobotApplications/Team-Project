@@ -50,17 +50,22 @@ public:
     void disagree();
     void agree();
     void say_phrase(const std::string& phrase, const std::string& language = "English");
+    void move_joints(const AL::ALValue& joints,
+                     const AL::ALValue& target_angles,
+                     const AL::ALValue& target_times,
+                     const bool &restore_pos = false,
+                     const std::string& phrase = "",
+                     const float& phrase_lag = 0.0f);
+    void not_these_droids();
+    void bow();
+
+    void script();
+
     void on_right_bumper_pressed();
     void subscribe_to_event();
     void unsubscribe_to_event();
     void onRightBumperPressed();
     void get_visual();
-
-    void not_these_droids();
-
-    void reverence();
-
-    void script();
 
 private:
     AL::ALMemoryProxy       memory_proxy;
