@@ -71,25 +71,25 @@ void APIDemonstration::init() {
     try {
         memory_proxy = ALMemoryProxy(getParentBroker());
     }
-    catch(const AL::ALError&) {
+    catch(const ALError&) {
         qiLogError("module.example") << "Memory proxy initialization failed." << std::endl;
     }
     try {
         TTS_proxy = ALTextToSpeechProxy(getParentBroker());
     }
-    catch(const AL::ALError&) {
+    catch(const ALError&) {
         qiLogError("module.example") << "TTS proxy initialization failed." << std::endl;
     }
     try {
         navigation_proxy = ALNavigationProxy(getParentBroker());
     }
-    catch(const AL::ALError&) {
+    catch(const ALError&) {
         qiLogError("module.example") << "Navigation proxy initialization failed." << std::endl;
     }
     try {
         video_proxy = ALVideoDeviceProxy(getParentBroker());
     }
-    catch(const AL::ALError&) {
+    catch(const ALError&) {
         qiLogError("module.example") << "Video initialization failed." << std::endl;
     }
     qiLogInfo("module.example") << "Initialization complete!" << std::endl;
@@ -163,11 +163,11 @@ void APIDemonstration::take_picture(const std::string& filename) {
     * Webots does not have this module and the programm crashes if
     * this photo_proxy is declared as a static variable.
     */
-    AL::ALPhotoCaptureProxy photo_proxy;
+    ALPhotoCaptureProxy photo_proxy;
     try {
         ALPhotoCaptureProxy photo_proxy = ALPhotoCaptureProxy(getParentBroker());
     }
-    catch(const AL::ALError&) {
+    catch(const ALError&) {
         qiLogError("module.example") << "Photo proxy initialization failed." << std::endl;
     }
 
@@ -175,7 +175,7 @@ void APIDemonstration::take_picture(const std::string& filename) {
     const std:: string fileName = filename + ".jpg";
     
     try {
-        AL::ALValue ret = photo_proxy.takePicture(folderPath, fileName);
+        ALValue ret = photo_proxy.takePicture(folderPath, fileName);
         std::cout << ret << std::endl;
     }
     catch(const ALError& e) {
@@ -186,16 +186,16 @@ void APIDemonstration::take_picture(const std::string& filename) {
 void APIDemonstration::disagree()
 {
     move_joints("HeadYaw", 
-        AL::ALValue::array(-1.5f, 1.5f, 0.0f), 
-        AL::ALValue::array(3.0f, 6.0f, 9.0f)
+        ALValue::array(-1.5f, 1.5f, 0.0f), 
+        ALValue::array(3.0f, 6.0f, 9.0f)
     );
 }
 
 void APIDemonstration::agree()
 {
     move_joints("HeadPitch", 
-        AL::ALValue::array(-0.5f, 1.5f, 0.0f), 
-        AL::ALValue::array(3.0f, 6.0f, 9.0f)
+        ALValue::array(-0.5f, 1.5f, 0.0f), 
+        ALValue::array(3.0f, 6.0f, 9.0f)
    );
 }
 
@@ -204,7 +204,7 @@ void APIDemonstration::say_phrase(const std::string& phrase, const std::string& 
         TTS_proxy.setLanguage(language);
         TTS_proxy.say(phrase);
     }
-    catch(const AL::ALError&) {
+    catch(const ALError&) {
         qiLogError("module.example") << "Could not get proxy to ALTextToSpeechProxy" << std::endl;
     }
 }
@@ -215,7 +215,7 @@ void APIDemonstration::subscribe_to_event() {
         //fState = memory_proxy.getData("RightBumperPressed");
 
         // Do not forget to initialize this mutex.
-        fCallbackMutex = AL::ALMutex::createALMutex();
+        fCallbackMutex = ALMutex::createALMutex();
         /** Subscribe to event LeftBumperPressed
         * Arguments:
         * - name of the event
@@ -224,7 +224,7 @@ void APIDemonstration::subscribe_to_event() {
         */
         memory_proxy.subscribeToEvent("RightBumperPressed", getName(), "onRightBumperPressed");
     }
-    catch (const AL::ALError& e) {
+    catch (const ALError& e) {
         qiLogError("module.example") << e.what() << std::endl;
     }
 }
@@ -250,19 +250,20 @@ void APIDemonstration::onRightBumperPressed() {
     try {
         TTS_proxy.say("Right bumper pressed");
     }
-    catch (const AL::ALError& e) {
+    catch (const ALError& e) {
         qiLogError("module.example") << e.what() << std::endl;
     }
 }
 
 void APIDemonstration::get_visual() {
-    const std::string clientName = video_proxy.subscribe("test", kQVGA, kBGRColorSpace, 30);
+    const std::string clientName = video_proxy.subscribe("apidemonstration", kQVGA, kBGRColorSpace, 30);
 
     cv::Mat imgHeader = cv::Mat(cv::Size(320, 240), CV_8UC3);
     cv::namedWindow("images");
 
     /** Main loop. Exit when pressing ESC.*/
-    while ((char) cv::waitKey(30) != 27)
+    char key = 0;
+    while (key != 27)
     {
         /** Retrieve an image from the camera.
         * The image is returned in the form of a container object, with the
@@ -288,8 +289,37 @@ void APIDemonstration::get_visual() {
 
             /** Display the iplImage on screen.*/
             cv::imshow("images", imgHeader);
+
+            key = cv::waitKey(30);
+            std::cout << key << " --- " << (int) key << std::endl;
+            motion_proxy.moveInit();
+            ALValue settings = ALValue::array(ALValue::array("MaxStepX", 0.2f));
+            if (key == 'w')
+                motion_proxy.post.moveTo(0.1, 0, 0);
+            else if (key == 's')
+                motion_proxy.post.moveTo(-0.1, 0, 0);
+            else if (key == 'a')
+                motion_proxy.post.moveTo(0, 0.05, 0);
+            else if (key == 'd')
+                motion_proxy.post.moveTo(0, -0.05, 0);
+            else if (key == 'q') //To the left
+                motion_proxy.post.moveTo(0, 0, 0.1);
+            else if (key == 'e') //To the right
+                motion_proxy.post.moveTo(0, 0, -0.1);
+            //else if (key == 2490368) //Up Arrow
+            else if (key == '8') //Up
+                motion_proxy.post.angleInterpolation("HeadPitch", -0.05, 0.2, false);
+            //else if (key == 2621440) //Down Arrow
+            else if (key == '2') //Down
+                motion_proxy.post.angleInterpolation("HeadPitch", 0.05, 0.2, false);
+            //else if (key == 2424832) //Left Arrow
+            else if (key == '4') //Left
+                motion_proxy.post.angleInterpolation("HeadYaw", 0.05, 0.2, false);
+            //else if (key == 2555904) //Right Arrow
+            else if (key == '6') //Right
+                motion_proxy.post.angleInterpolation("HeadYaw", -0.05, 0.2, false);
         }
-        catch (const AL::ALError& e) {
+        catch (const ALError& e) {
             qiLogError("module.example") << e.what() << std::endl;
         }
     }
@@ -299,9 +329,9 @@ void APIDemonstration::get_visual() {
     video_proxy.unsubscribe(clientName);
 }
 
-void APIDemonstration::move_joints(const AL::ALValue& joints,
-                                   const AL::ALValue& target_angles,
-                                   const AL::ALValue& target_times,
+void APIDemonstration::move_joints(const ALValue& joints,
+                                   const ALValue& target_angles,
+                                   const ALValue& target_times,
                                    const bool &restore_pos,
                                    const std::string& phrase,
                                    const float& phrase_lag) {
@@ -327,60 +357,60 @@ void APIDemonstration::move_joints(const AL::ALValue& joints,
             motion_proxy.angleInterpolation(joints, angles_before, std::vector<float>(n, 1.0), true);
         motion_proxy.setStiffnesses(joints, stiffness_before);
     }
-    catch (const AL::ALError& e) {
+    catch (const ALError& e) {
         std::cerr << "Caught exception: " << e.what() << std::endl;
     }
 }
 
 void APIDemonstration::not_these_droids() {
-    AL::ALValue n = AL::ALValue::array(
+    ALValue n = ALValue::array(
         "LShoulderPitch", 
         "LElbowRoll", 
         "LElbowYaw", 
         "LWristYaw",
         "LHand"
     );
-    AL::ALValue p = AL::ALValue::array(
-        AL::ALValue::array(0.8, 0.5),
-        AL::ALValue::array(-1.3, -1.3),
-        AL::ALValue::array(-0.5, -1.5),
-        AL::ALValue::array(0.9, 1.4),
-        AL::ALValue::array(0.5, 0.8)
+    ALValue p = ALValue::array(
+        ALValue::array(0.8, 0.5),
+        ALValue::array(-1.3, -1.3),
+        ALValue::array(-0.5, -1.5),
+        ALValue::array(0.9, 1.4),
+        ALValue::array(0.5, 0.8)
     );
     float time = 5.0;
-    AL::ALValue t = AL::ALValue::array(
-        AL::ALValue::array(2.0, time),
-        AL::ALValue::array(2.0, time),
-        AL::ALValue::array(2.0, time),
-        AL::ALValue::array(2.0, time),
-        AL::ALValue::array(2.0, time)
+    ALValue t = ALValue::array(
+        ALValue::array(2.0, time),
+        ALValue::array(2.0, time),
+        ALValue::array(2.0, time),
+        ALValue::array(2.0, time),
+        ALValue::array(2.0, time)
     );
     move_joints(n, p, t, true, "These aren't the droids you're looking for.", 3);
 }
 
 void APIDemonstration::bow() {
     posture_proxy.goToPosture("Stand", haste);
-    AL::ALValue n = AL::ALValue::array(
+    ALValue n = ALValue::array(
         "HeadPitch",
         "LShoulderPitch", 
         "LElbowRoll", 
         "LElbowYaw",
         "LHipYawPitch"
     );
-    AL::ALValue p = AL::ALValue::array(
-        AL::ALValue::array(0.5),
-        AL::ALValue::array(-0.04),
-        AL::ALValue::array(-1.3),
-        AL::ALValue::array(0.07),
-        AL::ALValue::array(-0.7)
+    ALValue p = ALValue::array(
+        ALValue::array(0.5),
+        ALValue::array(-0.04),
+        ALValue::array(-1.3),
+        ALValue::array(0.07),
+        ALValue::array(-0.7)
     );
     float time = 5.0;
-    AL::ALValue t = AL::ALValue::array(
-        AL::ALValue::array(time),
-        AL::ALValue::array(time),
-        AL::ALValue::array(time),
-        AL::ALValue::array(time),
-        AL::ALValue::array(time)
+    ALValue t = ALValue::array(
+        ALValue::array(time),
+        ALValue::array(time),
+        ALValue::array(time),
+        ALValue::array(time),
+        ALValue::array(time)
     );
     move_joints(n, p, t, true, "Good afternoon!", 2);
 }

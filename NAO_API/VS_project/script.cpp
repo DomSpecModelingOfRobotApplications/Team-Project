@@ -8,12 +8,12 @@ void APIDemonstration::script()
     //say_phrase("Here we go!", "English");
     //say_phrase("Bonjour! Un, deux, trois, Je ne sais pas", "French");
     //disagree();
-    agree();
+    //agree();
     //posture("Sit");
     //rest();
     //wake_up();
     //subscribe_to_event();
-    //get_visual();
+    get_visual();
     //not_these_droids();
     //bow();
 }
