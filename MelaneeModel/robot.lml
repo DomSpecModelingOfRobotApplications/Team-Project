@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:PLM="http://melanee.org/PLM" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:textdef="http://melanee.org/textdef">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:PLM="http://melanee.org/PLM" xmlns:graphdef="http://melanee.org/graphdef" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:textdef="http://melanee.org/textdef">
   <PLM:Domain xmi:id="_j0UcYJYuEeORlPnJTqVX6A">
     <ontologies xmi:type="PLM:DeepModel" xmi:id="_cQoMAJYvEeOhjpu65D91-A" name="Robot">
       <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_cQr2YJYvEeOhjpu65D91-A">
@@ -148,6 +148,16 @@
               <content xmi:type="textdef:Value" xmi:id="_KpCuQK5tEeOkrq5zxpBIGw" expression="theta"/>
               <content xmi:type="textdef:Literal" xmi:id="_LzDDQK5tEeOkrq5zxpBIGw" expression=");%n"/>
               <content xmi:type="textdef:Value" xmi:id="_0d8voK5tEeOkrq5zxpBIGw" expression="post"/>
+            </dslVisualizer>
+            <dslVisualizer xmi:type="graphdef:GraphicalDSLVisualizer" xmi:id="_IQ7_MNkyEeOK1LcKg7b83w">
+              <content xmi:type="graphdef:RoundedRectangle" xmi:id="_KXdm0NkyEeOK1LcKg7b83w" width="150" radius="20">
+                <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_MSpZwNk1EeOK1LcKg7b83w"/>
+                <layout xmi:type="graphdef:TableLayout" xmi:id="_PjdqQNk1EeOK1LcKg7b83w" columns="3">
+                  <content xmi:type="graphdef:ExpressionLabel" xmi:id="_QzypsNk1EeOK1LcKg7b83w" expression="x"/>
+                  <content xmi:type="graphdef:ExpressionLabel" xmi:id="_RsArINk1EeOK1LcKg7b83w" expression="y"/>
+                  <content xmi:type="graphdef:ExpressionLabel" xmi:id="_SmdhMNk1EeOK1LcKg7b83w" expression="theta"/>
+                </layout>
+              </content>
             </dslVisualizer>
           </visualizer>
           <feature xmi:type="PLM:Attribute" xmi:id="_wCg7kK5sEeOkrq5zxpBIGw" name="x" durability="1" mutability="1" datatype="Integer">
@@ -804,7 +814,7 @@
             <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
           </visualizer>
-          <feature xmi:type="PLM:Attribute" xmi:id="_pt4-8LQWEeOy7YyPGLNp3g" name="posture_name" value="Crouch" datatype="Postures">
+          <feature xmi:type="PLM:Attribute" xmi:id="_pt4-8LQWEeOy7YyPGLNp3g" name="posture_name" value="LyingBelly" datatype="Postures">
             <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_puBh0LQWEeOy7YyPGLNp3g">
               <attributes>name= default</attributes>
               <attributes>expressed= default</attributes>
