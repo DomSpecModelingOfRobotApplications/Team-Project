@@ -14,6 +14,7 @@
 #include <alproxies/alvideodeviceproxy.h>
 #include <althread/almutex.h>
 #include <alproxies/alfacedetectionproxy.h>
+#include <alproxies/aldarknessdetectionproxy.h>
 
 namespace AL {
     // This is a forward declaration of AL:ALBroker which
@@ -72,6 +73,10 @@ public:
     void face_detected();
     void stop_face_detection();
 
+    void darkness_detection(const int &threshold = 60);
+    void darkness_detected();
+    void stop_darkness_detection();
+
 private:
     AL::ALMemoryProxy       memory_proxy;
     AL::ALTextToSpeechProxy TTS_proxy;
@@ -80,11 +85,13 @@ private:
     AL::ALNavigationProxy   navigation_proxy;
     //AL::ALPhotoCaptureProxy photo_proxy;
     AL::ALVideoDeviceProxy  video_proxy;
+    //AL::ALDarknessDetectionProxy darkness_proxy;
 
     float haste;
 
     boost::shared_ptr<AL::ALMutex> fCallbackMutexBumper;
     boost::shared_ptr<AL::ALMutex> fCallbackMutexFaceDetection;
+    boost::shared_ptr<AL::ALMutex> fCallbackMutexDarknessDetection;
 
 };
 #endif // APIDEMONSTRATION_H

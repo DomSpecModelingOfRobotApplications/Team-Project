@@ -57,6 +57,9 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
 
     functionName("face_detected", getName(), "Method called when the the face is detected. Makes Nao speak");
     BIND_METHOD(APIDemonstration::face_detected);
+
+    functionName("darkness_detected", getName(), "Method called when the the darkness is detected. Makes Nao speak");
+    BIND_METHOD(APIDemonstration::darkness_detected);
     // If you had other methods, you could bind them here...
     /** Bound methods can only take const ref arguments of basic types,
     * or AL::ALValue or return basic types or an AL::ALValue.
@@ -96,6 +99,12 @@ void APIDemonstration::init() {
     catch(const ALError&) {
         qiLogError("module.example") << "Video initialization failed." << std::endl;
     }
+   /* try {
+        darkness_proxy = ALDarknessDetectionProxy(getParentBroker());
+    }
+    catch(const ALError&) {
+        qiLogError("module.example") << "Darkness Detection failed." << std::endl;
+    }*/
     qiLogInfo("module.example") << "Initialization complete!" << std::endl;
     haste = 0.7f;
     std::string repeat;
@@ -449,6 +458,51 @@ void APIDemonstration::face_detected() {
     }
     try {
         TTS_proxy.say("A face is detected");
+    }
+    catch (const ALError& e) {
+        qiLogError("module.example") << e.what() << std::endl;
+    }
+
+}
+
+// darkness_detection:
+// 0: bright environment
+// 100: dark environment
+// his value is then compared to a darkness threshold:
+// if it is smaller than the threshold, the surrounding environment is not considered as dark.
+// if it is greater than the threshold, the surrounding environment is considered as dark.
+
+ void APIDemonstration::darkness_detection(const int &threshold) {
+    qiLogInfo("module.example") << "Subscribing to darkness detection event." << std::endl;
+    try {
+        fCallbackMutexDarknessDetection = ALMutex::createALMutex();
+       // darkness_proxy.setDarknessThreshold(threshold);
+
+        memory_proxy.subscribeToEvent("DarknessDetected", getName(), "darkness_detected");
+    }
+    catch (const ALError& e) {
+        qiLogError("module.example") << e.what() << std::endl;
+    }
+ }
+
+
+
+ void APIDemonstration::stop_darkness_detection() {
+    qiLogInfo("module.example") << "Unsubscribing to darkness detection event." << std::endl;
+    memory_proxy.unsubscribeToEvent("DarknessDetected", getName());
+}
+
+ void APIDemonstration::darkness_detected() {
+    
+    qiLogInfo("module.example") << "Executing callback method on darkness_detected event" << std::endl;
+
+    ALCriticalSection section(fCallbackMutexDarknessDetection);
+    float fState =  memory_proxy.getData("DarknessDetected");
+    if (fState > 0.5f) {
+        return;
+    }
+    try {
+        TTS_proxy.say("It is too dark");
     }
     catch (const ALError& e) {
         qiLogError("module.example") << e.what() << std::endl;

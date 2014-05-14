@@ -16,9 +16,11 @@ void APIDemonstration::script()
     //get_visual();
     //not_these_droids();
     //bow();
-    face_detection();
+    //face_detection();
+    darkness_detection();
     disagree();
     agree();
-    stop_face_detection();
+    //stop_face_detection();
+    stop_darkness_detection();
 
 }
