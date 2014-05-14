@@ -1,10 +1,12 @@
 ﻿Ensure:
-CMake version 2.8.3
-Python 2.7
-Visual Studio 2010
+CMake version >2.8.3
+Python 2.7.x
 
-	python ez_setup.py
-	setuptools install pip
+Get MSVC Compiler:
+To install MSVC Compiler you can either get Visual Studio 2010 [Express]
+or install dotNetFx40_Full_setup.exe, winsdk_web.exe -- pick just c++ compiler, tools, x86 libraries.
+
+	python get-pip.py
 	pip install qibuild
 
 Extract naoqi-sdk-1.14.5-win32-vs2010.zip in /path/to/cpp/sdk/
@@ -12,17 +14,69 @@ Extract naoqi-sdk-1.14.5-win32-vs2010.zip in /path/to/cpp/sdk/
 For the CMake generator, choose ‘Unix Makefiles’ on Linux and Mac, or ‘Visual Studio 9 2008’ or ‘Visual Studio 10’ on Windows. (Note: do not choose the 64 bits version for Visual Studio)
 For the IDE, it is advised to use ‘Visual Studio’ on Windows and QtCreator on Linux and Mac
 
-
 	qibuild init [--interactive]
 	qitoolchain create mytoolchain /path/to/cpp/sdk/toolchain.xml --default
 [qisrc create foo]
-[cd foo]  - or add project name after each command
+[cd foo]  - or add project's name after each command
 	qibuild configure
 	qibuild make
+Launch .exe file in build-mytoolchain/sdk/bin/
+It requires /path/to/cpp/sdk/bin/ folder to be on the PATH
+
+If you have Visual Studio installed you can open the generated project.
 	qibuild open
+
+To delete build directory
+	qibuild clean -f
 
 If something goes wrong:
 	qibuild config
 	qitoolchain info
+	qibuild configure --trace-cmake
 
+------------------------------------------------------------------------------
 Toolchains are stored in ~/.config/qi/toolchains.cfg
+
+Upgrades:
+	pip install qibuild --update
+	python -m pip install -U pip
+
+Another way to install pip
+	python ez_setup.py
+	easy_install pip
+or
+	setuptools install pip
+
+Install libuuid-devel and the binutils packages on Cygwin64
+
+Instead of <cmake generator="Visual Studio 10" /> you can use
+<env bat_file="C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" />
+------------------------------------------------------------------------------	
+$ cat ~/.config/qi/qibuild.xml
+<qibuild version="1">
+  <build />
+  <defaults>
+    <cmake generator="Visual Studio 10" />
+  </defaults>
+  <ide name="Visual Studio" />
+</qibuild>
+
+$ cat ~/.config/qi/toolchains.cfg
+[toolchains]
+naoqi-sdk = path\to\naoqi-sdk-1.14.5-win32-vs2010\toolchain.xml
+
+$ cat ~/.config/qi/toolchain/naoqi-sdk.cfg
+[package "naoqi-sdk-win32-vs2010"]
+path = path\to\naoqi-sdk-1.14.5-win32-vs2010
+
+$ cat .qi/qibuild.xml
+<qibuild version="1">
+  <defaults config="naoqi-sdk" />
+  <build />
+</qibuild>
+
+$ cat .qi/worktree.xml
+<worktree>
+  <project src="$PROJECT_FOLDER_NAME" />
+</worktree>
+
