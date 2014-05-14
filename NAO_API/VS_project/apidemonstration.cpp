@@ -55,6 +55,8 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
     functionName("bow", getName(), "Nao makes a bow");
     BIND_METHOD(APIDemonstration::bow);
 
+    functionName("face_detected", getName(), "Method called when the the face is detected. Makes Nao speak");
+    BIND_METHOD(APIDemonstration::face_detected);
     // If you had other methods, you could bind them here...
     /** Bound methods can only take const ref arguments of basic types,
     * or AL::ALValue or return basic types or an AL::ALValue.
@@ -62,8 +64,10 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
 }
 
 APIDemonstration::~APIDemonstration() {
-    if (fCallbackMutex != 0) 
+    if (fCallbackMutexBumper != 0) 
         unsubscribe_to_event();
+    if (fCallbackMutexFaceDetection != 0) 
+        stop_face_detection();
 }
 
 void APIDemonstration::init() {
@@ -187,7 +191,8 @@ void APIDemonstration::disagree()
 {
     move_joints("HeadYaw", 
         ALValue::array(-1.5f, 1.5f, 0.0f), 
-        ALValue::array(3.0f, 6.0f, 9.0f)
+        ALValue::array(3.0f, 6.0f, 9.0f),
+        true
     );
 }
 
@@ -195,7 +200,8 @@ void APIDemonstration::agree()
 {
     move_joints("HeadPitch", 
         ALValue::array(-0.5f, 1.5f, 0.0f), 
-        ALValue::array(3.0f, 6.0f, 9.0f)
+        ALValue::array(3.0f, 6.0f, 9.0f),
+        true
    );
 }
 
@@ -215,7 +221,7 @@ void APIDemonstration::subscribe_to_event() {
         //fState = memory_proxy.getData("RightBumperPressed");
 
         // Do not forget to initialize this mutex.
-        fCallbackMutex = ALMutex::createALMutex();
+        fCallbackMutexBumper = ALMutex::createALMutex();
         /** Subscribe to event LeftBumperPressed
         * Arguments:
         * - name of the event
@@ -239,7 +245,7 @@ void APIDemonstration::onRightBumperPressed() {
     /**
     * As long as this is defined, the code is thread-safe.
     */
-    ALCriticalSection section(fCallbackMutex);
+    ALCriticalSection section(fCallbackMutexBumper);
     /**
     * Check that the bumper is pressed.
     */
@@ -413,4 +419,39 @@ void APIDemonstration::bow() {
         ALValue::array(time)
     );
     move_joints(n, p, t, true, "Good afternoon!", 2);
+}
+
+void APIDemonstration::face_detection() {
+    
+    qiLogInfo("module.example") << "Subscribing to face detection event." << std::endl;
+    try {
+        fCallbackMutexFaceDetection = ALMutex::createALMutex();
+        memory_proxy.subscribeToEvent("FaceDetected", getName(), "face_detected");
+    }
+    catch (const ALError& e) {
+        qiLogError("module.example") << e.what() << std::endl;
+    }
+}
+
+void APIDemonstration::stop_face_detection() {
+    qiLogInfo("module.example") << "Unsubscribing to Face detection event." << std::endl;
+    memory_proxy.unsubscribeToEvent("FaceDetected", getName());
+}
+
+void APIDemonstration::face_detected() {
+    
+    qiLogInfo("module.example") << "Executing callback method on face_detected event" << std::endl;
+
+    ALCriticalSection section(fCallbackMutexFaceDetection);
+    float fState =  memory_proxy.getData("FaceDetected");
+    if (fState > 0.5f) {
+        return;
+    }
+    try {
+        TTS_proxy.say("A face is detected");
+    }
+    catch (const ALError& e) {
+        qiLogError("module.example") << e.what() << std::endl;
+    }
+
 }

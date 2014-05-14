@@ -13,6 +13,7 @@
 #include <alproxies/alrobotpostureproxy.h>
 #include <alproxies/alvideodeviceproxy.h>
 #include <althread/almutex.h>
+#include <alproxies/alfacedetectionproxy.h>
 
 namespace AL {
     // This is a forward declaration of AL:ALBroker which
@@ -66,6 +67,10 @@ public:
     void unsubscribe_to_event();
     void onRightBumperPressed();
     void get_visual();
+    
+    void face_detection();
+    void face_detected();
+    void stop_face_detection();
 
 private:
     AL::ALMemoryProxy       memory_proxy;
@@ -78,6 +83,8 @@ private:
 
     float haste;
 
-    boost::shared_ptr<AL::ALMutex> fCallbackMutex;
+    boost::shared_ptr<AL::ALMutex> fCallbackMutexBumper;
+    boost::shared_ptr<AL::ALMutex> fCallbackMutexFaceDetection;
+
 };
 #endif // APIDEMONSTRATION_H

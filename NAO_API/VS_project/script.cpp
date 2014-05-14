@@ -13,7 +13,12 @@ void APIDemonstration::script()
     //rest();
     //wake_up();
     //subscribe_to_event();
-    get_visual();
+    //get_visual();
     //not_these_droids();
     //bow();
+    face_detection();
+    disagree();
+    agree();
+    stop_face_detection();
+
 }
