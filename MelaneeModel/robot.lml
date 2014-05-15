@@ -461,6 +461,7 @@
               <content xmi:type="graphdef:Link" xmi:id="__N4acNrKEeON2dcg6S_kNA">
                 <decoration xmi:type="graphdef:DefaultLinkDecoration" xmi:id="_Ebqt8NrLEeON2dcg6S_kNA" participation="_-uijsrQVEeOy7YyPGLNp3g" decorationType="PolyLineDecoration"/>
                 <decoration xmi:type="graphdef:DefaultLinkDecoration" xmi:id="_8YOxENrMEeOl4O-CI3MuVw" participation="_-ukY4rQVEeOy7YyPGLNp3g" decorationType="NoLineDecoration"/>
+                <label xmi:type="graphdef:StaticLabel" xmi:id="_t66dsNxSEeOSq6SyswvAuQ" participation="_-uijsrQVEeOy7YyPGLNp3g" text="true"/>
               </content>
             </dslVisualizer>
           </visualizer>
@@ -619,9 +620,7 @@
               <content xmi:type="graphdef:Link" xmi:id="_NrM4QdrOEeOl4O-CI3MuVw">
                 <decoration xmi:type="graphdef:DefaultLinkDecoration" xmi:id="_NrM4QtrOEeOl4O-CI3MuVw" participation="_p_kLB9q8EeOrBZsLBLrPug" decorationType="PolyLineDecoration"/>
                 <decoration xmi:type="graphdef:DefaultLinkDecoration" xmi:id="_NrM4Q9rOEeOl4O-CI3MuVw" participation="_p_kK_dq8EeOrBZsLBLrPug" decorationType="NoLineDecoration"/>
-              </content>
-              <content xmi:type="graphdef:TableLayout" xmi:id="_kCGW4NrQEeOl4O-CI3MuVw">
-                <content xmi:type="graphdef:StaticLabel" xmi:id="_nH64UNrQEeOl4O-CI3MuVw" participation="_p_kLB9q8EeOrBZsLBLrPug" text="uses"/>
+                <label xmi:type="graphdef:StaticLabel" xmi:id="_3SG2kNxSEeOSq6SyswvAuQ" participation="_p_kLB9q8EeOrBZsLBLrPug" text="uses"/>
               </content>
             </dslVisualizer>
           </visualizer>
@@ -976,7 +975,7 @@
             <attributes>levelIndex= noshow</attributes>
             <attributes>transitive= default</attributes>
             <attributes>ProximityClassification= 1</attributes>
-            <attributes>DSLRendering= false</attributes>
+            <attributes>DSLRendering= true</attributes>
             <attributes>ProximityIndication= name:1</attributes>
             <attributes>collapsed= true</attributes>
           </visualizer>
