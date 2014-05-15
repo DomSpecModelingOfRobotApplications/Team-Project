@@ -47,19 +47,20 @@
             <modelElement xsi:type="PLM:Entity" href="robot.lml#_i_LScNxeEeOg4fo_q0ga3g"/>
             <children xsi:type="M2TWeaving:TextElement" offset="84" length="10" text="agree();&#xD;&#xA;"/>
           </children>
-          <children xsi:type="M2TWeaving:TextElement" offset="94" length="3" text="}&#xD;&#xA;"/>
+          <children xsi:type="M2TWeaving:TextElement" offset="94" length="10" text="}&#xD;&#xA;else{&#xD;&#xA;"/>
           <children xsi:type="M2TWeaving:WeavingLink">
             <modelElement xsi:type="PLM:Entity" href="robot.lml#_Un2nkNxeEeOg4fo_q0ga3g"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="97" length="13" text="disagree();&#xD;&#xA;"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="104" length="13" text="disagree();&#xD;&#xA;"/>
+          </children>
+          <children xsi:type="M2TWeaving:TextElement" offset="117" length="3" text="}&#xD;&#xA;"/>
+          <children xsi:type="M2TWeaving:WeavingLink">
+            <modelElement xsi:type="PLM:Entity" href="robot.lml#_AMxOANxfEeOg4fo_q0ga3g"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="120" length="9" text="posture(&quot;"/>
             <children xsi:type="M2TWeaving:WeavingLink">
-              <modelElement xsi:type="PLM:Entity" href="robot.lml#_AMxOANxfEeOg4fo_q0ga3g"/>
-              <children xsi:type="M2TWeaving:TextElement" offset="110" length="9" text="posture(&quot;"/>
-              <children xsi:type="M2TWeaving:WeavingLink">
-                <modelElement xsi:type="PLM:Attribute" href="robot.lml#_ANBFoNxfEeOg4fo_q0ga3g"/>
-                <children xsi:type="M2TWeaving:TextElement" offset="119" length="8" text="SitRelax"/>
-              </children>
-              <children xsi:type="M2TWeaving:TextElement" offset="127" length="5" text="&quot;);&#xD;&#xA;"/>
+              <modelElement xsi:type="PLM:Attribute" href="robot.lml#_ANBFoNxfEeOg4fo_q0ga3g"/>
+              <children xsi:type="M2TWeaving:TextElement" offset="129" length="8" text="SitRelax"/>
             </children>
+            <children xsi:type="M2TWeaving:TextElement" offset="137" length="5" text="&quot;);&#xD;&#xA;"/>
           </children>
         </children>
       </children>
