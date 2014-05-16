@@ -430,6 +430,13 @@ void APIDemonstration::bow() {
     move_joints(n, p, t, true, "Good afternoon!", 2);
 }
 
+bool APIDemonstration::is_it_a_face(int time ) {
+    b_face_detected = false;
+    face_detection();
+    qi::os::sleep(time);
+    stop_face_detection();
+    return b_face_detected;
+}
 void APIDemonstration::face_detection() {
     
     qiLogInfo("module.example") << "Subscribing to face detection event." << std::endl;
@@ -452,17 +459,11 @@ void APIDemonstration::face_detected() {
     qiLogInfo("module.example") << "Executing callback method on face_detected event" << std::endl;
 
     ALCriticalSection section(fCallbackMutexFaceDetection);
-    float fState =  memory_proxy.getData("FaceDetected");
-    if (fState > 0.5f) {
-        return;
+    ALValue data =  memory_proxy.getData("FaceDetected");
+    if (data.getSize() > 0) {
+        TTS_proxy.say("Yep");
+        b_face_detected = true;
     }
-    try {
-        TTS_proxy.say("A face is detected");
-    }
-    catch (const ALError& e) {
-        qiLogError("module.example") << e.what() << std::endl;
-    }
-
 }
 
 // darkness_detection:
@@ -497,15 +498,12 @@ void APIDemonstration::face_detected() {
     qiLogInfo("module.example") << "Executing callback method on darkness_detected event" << std::endl;
 
     ALCriticalSection section(fCallbackMutexDarknessDetection);
-    float fState =  memory_proxy.getData("DarknessDetected");
-    if (fState > 0.5f) {
-        return;
-    }
-    try {
-        TTS_proxy.say("It is too dark");
-    }
-    catch (const ALError& e) {
-        qiLogError("module.example") << e.what() << std::endl;
-    }
+ //   int data =  memory_proxy.getData("DarknessDetected");
+ //   if (data > ) {
+ //       return;
+ //   }
+ //   try {
+ //       TTS_proxy.say("It is too dark");
+ //   }
 
 }

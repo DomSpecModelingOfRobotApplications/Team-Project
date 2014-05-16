@@ -76,6 +76,7 @@ public:
     void darkness_detection(const int &threshold = 60);
     void darkness_detected();
     void stop_darkness_detection();
+    bool is_it_a_face(int time = 10); // time is in seconds
 
 private:
     AL::ALMemoryProxy       memory_proxy;
@@ -88,6 +89,8 @@ private:
     //AL::ALDarknessDetectionProxy darkness_proxy;
 
     float haste;
+
+    bool b_face_detected;
 
     boost::shared_ptr<AL::ALMutex> fCallbackMutexBumper;
     boost::shared_ptr<AL::ALMutex> fCallbackMutexFaceDetection;
