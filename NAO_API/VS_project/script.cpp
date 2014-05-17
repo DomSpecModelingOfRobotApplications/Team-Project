@@ -17,10 +17,13 @@ void APIDemonstration::script()
     //not_these_droids();
     //bow();
     //face_detection();
-    darkness_detection();
-    disagree();
-    agree();
+    //darkness_detection();
+    //disagree();
+    //agree();
     //stop_face_detection();
-    stop_darkness_detection();
-
+    //stop_darkness_detection();
+    if (detect_red_ball(5))
+        std::cout << "Yepp" << std::endl;
+    else
+        std::cout << "Nope" << std::endl;
 }
