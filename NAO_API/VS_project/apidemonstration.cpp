@@ -1,21 +1,5 @@
 #include "apidemonstration.h"
 
-#include <iostream>
-#include <string>
-#include <vector>
-
-#include <alcommon/albroker.h>
-#include <alerror/alerror.h>
-#include <althread/alcriticalsection.h>
-#include <alvalue/alvalue.h>
-#include <alvision/alimage.h>
-#include <alvision/alvisiondefinitions.h>
-#include <qi/log.hpp>
-#include <qi/os.hpp>
-
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
 using namespace AL;
 
 APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std::string& name):
@@ -55,11 +39,15 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
     functionName("bow", getName(), "Nao makes a bow");
     BIND_METHOD(APIDemonstration::bow);
 
-    functionName("face_detected", getName(), "Method called when the the face is detected. Makes Nao speak");
+    functionName("face_detected", getName(), "Method called when a face is detected.");
     BIND_METHOD(APIDemonstration::face_detected);
 
-    functionName("darkness_detected", getName(), "Method called when the the darkness is detected. Makes Nao speak");
+    functionName("darkness_detected", getName(), "Method called when darkness is detected.");
     BIND_METHOD(APIDemonstration::darkness_detected);
+
+    functionName("red_ball_detected", getName(), "Method called when a red ball is detected.");
+    BIND_METHOD(APIDemonstration::red_ball_detected);
+
     // If you had other methods, you could bind them here...
     /** Bound methods can only take const ref arguments of basic types,
     * or AL::ALValue or return basic types or an AL::ALValue.
@@ -71,6 +59,8 @@ APIDemonstration::~APIDemonstration() {
         unsubscribe_to_event();
     if (fCallbackMutexFaceDetection != 0) 
         stop_face_detection();
+    if (fCallbackMutexDarknessDetection != 0) 
+        stop_darkness_detection();
 }
 
 void APIDemonstration::init() {
@@ -200,8 +190,7 @@ void APIDemonstration::disagree()
 {
     move_joints("HeadYaw", 
         ALValue::array(-1.5f, 1.5f, 0.0f), 
-        ALValue::array(3.0f, 6.0f, 9.0f),
-        true
+        ALValue::array(3.0f, 6.0f, 9.0f)
     );
 }
 
@@ -209,8 +198,7 @@ void APIDemonstration::agree()
 {
     move_joints("HeadPitch", 
         ALValue::array(-0.5f, 1.5f, 0.0f), 
-        ALValue::array(3.0f, 6.0f, 9.0f),
-        true
+        ALValue::array(3.0f, 6.0f, 9.0f)
    );
 }
 
@@ -271,15 +259,20 @@ void APIDemonstration::onRightBumperPressed() {
 }
 
 void APIDemonstration::get_visual() {
-    const std::string clientName = video_proxy.subscribe("apidemonstration", kQVGA, kBGRColorSpace, 30);
+    motion_proxy.setStiffnesses(ALValue::array("RLeg", "LLeg", "Head"), 1.0);
+    motion_proxy.moveInit();
+    ALValue settings = ALValue::array(ALValue::array("MaxStepX", 0.5f));
 
-    cv::Mat imgHeader = cv::Mat(cv::Size(320, 240), CV_8UC3);
+    char key = cv::waitKey(30);
     cv::namedWindow("images");
 
-    /** Main loop. Exit when pressing ESC.*/
-    char key = 0;
-    while (key != 27)
-    {
+    const std::string clientName = video_proxy.subscribeCamera("apidemonstration", 0, kQVGA, kBGRColorSpace, 30);
+    cv::Mat imgHeader = cv::Mat(cv::Size(320, 240), CV_8UC3);
+
+    //bool die = false;
+    //boost::thread control(&APIDemonstration::_get_control, this, &die);
+
+    while (key != 27) {
         /** Retrieve an image from the camera.
         * The image is returned in the form of a container object, with the
         * following fields:
@@ -293,56 +286,60 @@ void APIDemonstration::get_visual() {
         */
         try {
             ALValue img = video_proxy.getImageRemote(clientName);
-
-            /** Access the image buffer (6th field) and assign it to the opencv image
-            * container. */
             imgHeader.data = (uchar*) img[6].GetBinary();
-
             /** Tells to ALVideoDevice that it can give back the image buffer to the
             * driver. Optional after a getImageRemote but MANDATORY after a getImageLocal.*/
             video_proxy.releaseImage(clientName);
-
             /** Display the iplImage on screen.*/
             cv::imshow("images", imgHeader);
-
-            key = cv::waitKey(30);
-            std::cout << key << " --- " << (int) key << std::endl;
-            motion_proxy.moveInit();
-            ALValue settings = ALValue::array(ALValue::array("MaxStepX", 0.2f));
-            if (key == 'w')
-                motion_proxy.post.moveTo(0.1, 0, 0);
-            else if (key == 's')
-                motion_proxy.post.moveTo(-0.1, 0, 0);
-            else if (key == 'a')
-                motion_proxy.post.moveTo(0, 0.05, 0);
-            else if (key == 'd')
-                motion_proxy.post.moveTo(0, -0.05, 0);
-            else if (key == 'q') //To the left
-                motion_proxy.post.moveTo(0, 0, 0.1);
-            else if (key == 'e') //To the right
-                motion_proxy.post.moveTo(0, 0, -0.1);
-            //else if (key == 2490368) //Up Arrow
-            else if (key == '8') //Up
-                motion_proxy.post.angleInterpolation("HeadPitch", -0.05, 0.2, false);
-            //else if (key == 2621440) //Down Arrow
-            else if (key == '2') //Down
-                motion_proxy.post.angleInterpolation("HeadPitch", 0.05, 0.2, false);
-            //else if (key == 2424832) //Left Arrow
-            else if (key == '4') //Left
-                motion_proxy.post.angleInterpolation("HeadYaw", 0.05, 0.2, false);
-            //else if (key == 2555904) //Right Arrow
-            else if (key == '6') //Right
-                motion_proxy.post.angleInterpolation("HeadYaw", -0.05, 0.2, false);
         }
         catch (const ALError& e) {
             qiLogError("module.example") << e.what() << std::endl;
         }
-    }
 
-    /** Cleanup.*/
+        if (key == 'w')
+            motion_proxy.post.moveTo(0.1, 0, 0);
+        else if (key == 's')
+            motion_proxy.post.moveTo(-0.1, 0, 0);
+        else if (key == 'a')
+            motion_proxy.post.moveTo(0, 0.05, 0);
+        else if (key == 'd')
+            motion_proxy.post.moveTo(0, -0.05, 0);
+        else if (key == 'q') //To the left
+            motion_proxy.post.moveTo(0, 0, 0.1);
+        else if (key == 'e') //To the right
+            motion_proxy.post.moveTo(0, 0, -0.1);
+        //else if (key == 2490368) //Up Arrow
+        else if (key == '8') //Up
+            motion_proxy.post.angleInterpolation("HeadPitch", -0.05, 0.2, false);
+        //else if (key == 2621440) //Down Arrow
+        else if (key == '5') //Down
+            motion_proxy.post.angleInterpolation("HeadPitch", 0.05, 0.2, false);
+        //else if (key == 2424832) //Left Arrow
+        else if (key == '4') //Left
+            motion_proxy.post.angleInterpolation("HeadYaw", 0.05, 0.2, false);
+        //else if (key == 2555904) //Right Arrow
+        else if (key == '6') //Right
+            motion_proxy.post.angleInterpolation("HeadYaw", -0.05, 0.2, false);
+        key = cv::waitKey(30);
+        if (key != -1)
+            std::cout << key << " --- " << (int) key << std::endl;
+    }
+    //die = true;
+    //if (control.joinable())
+    //    control.join();
     cv::destroyWindow("images");
     video_proxy.unsubscribe(clientName);
 }
+
+//void APIDemonstration::_get_control(bool *die) {
+//   
+//    /** Main loop. Exit when pressing ESC.*/
+//    while (!(*die))
+//    {
+//        
+//    }
+//}
 
 void APIDemonstration::move_joints(const ALValue& joints,
                                    const ALValue& target_angles,
@@ -360,7 +357,7 @@ void APIDemonstration::move_joints(const ALValue& joints,
         motion_proxy.setStiffnesses(joints, std::vector<float>(n, 1.0));
         
         bool isAbsolute = true;
-        motion_proxy.post.angleInterpolation(joints, target_angles, target_times, isAbsolute);
+        int id = motion_proxy.post.angleInterpolation(joints, target_angles, target_times, isAbsolute);
 
         qi::os::sleep(phrase_lag);
         if (phrase != "") {
@@ -371,6 +368,7 @@ void APIDemonstration::move_joints(const ALValue& joints,
         if (restore_pos)
             motion_proxy.angleInterpolation(joints, angles_before, std::vector<float>(n, 1.0), true);
         motion_proxy.setStiffnesses(joints, stiffness_before);
+        motion_proxy.wait(id, 0);
     }
     catch (const ALError& e) {
         std::cerr << "Caught exception: " << e.what() << std::endl;
@@ -465,7 +463,6 @@ void APIDemonstration::face_detected() {
         b_face_detected = true;
     }
 }
-
 // darkness_detection:
 // 0: bright environment
 // 100: dark environment
@@ -473,7 +470,7 @@ void APIDemonstration::face_detected() {
 // if it is smaller than the threshold, the surrounding environment is not considered as dark.
 // if it is greater than the threshold, the surrounding environment is considered as dark.
 
- void APIDemonstration::darkness_detection(const int &threshold) {
+void APIDemonstration::darkness_detection(const int &threshold) {
     qiLogInfo("module.example") << "Subscribing to darkness detection event." << std::endl;
     try {
         fCallbackMutexDarknessDetection = ALMutex::createALMutex();
@@ -486,15 +483,12 @@ void APIDemonstration::face_detected() {
     }
  }
 
-
-
- void APIDemonstration::stop_darkness_detection() {
+void APIDemonstration::stop_darkness_detection() {
     qiLogInfo("module.example") << "Unsubscribing to darkness detection event." << std::endl;
     memory_proxy.unsubscribeToEvent("DarknessDetected", getName());
 }
 
- void APIDemonstration::darkness_detected() {
-    
+void APIDemonstration::darkness_detected() { 
     qiLogInfo("module.example") << "Executing callback method on darkness_detected event" << std::endl;
 
     ALCriticalSection section(fCallbackMutexDarknessDetection);
@@ -505,5 +499,65 @@ void APIDemonstration::face_detected() {
  //   try {
  //       TTS_proxy.say("It is too dark");
  //   }
+    //catch (const ALError& e) {
+    //    qiLogError("module.example") << e.what() << std::endl;
+    //}
+}
 
+bool APIDemonstration::detect_red_ball(const float& time) {
+    b_red_ball_detected = false;
+    //ALRedBallDetectionProxy proxy;
+    //try {
+    //    proxy = ALRedBallDetectionProxy(getParentBroker());
+    //}
+    //catch(const ALError&) {
+    //    qiLogError("module.example") << "Red ball proxy initialization failed." << std::endl;
+    //}
+    //proxy.subscribe(getName());
+
+    qiLogInfo("module.example") << "Subscribing to red ball detection event." << std::endl;
+    try {
+        fCallbackMutexRedBallDetection = ALMutex::createALMutex();
+        memory_proxy.subscribeToEvent("redBallDetected", getName(), "red_ball_detected");
+    }
+    catch (const ALError& e) {
+        qiLogError("module.example") << e.what() << std::endl;
+    }
+    qi::os::sleep(time);
+
+    qiLogInfo("module.example") << "Unsubscribing to red ball detection event." << std::endl;
+    memory_proxy.unsubscribeToEvent("redBallDetected", getName());
+    //proxy.unsubscribe(getName());
+
+    //ALValue data = 0;
+    //std::cout << data << std::endl;
+    //try {
+    //    data = memory_proxy.getData("redBallDetected");
+    //    memory_proxy.removeData("redBallDetected");
+    //}
+    //catch (const ALError& e) {
+    //    qiLogError("module.example") << e.what() << std::endl;
+    //}
+    //std::cout << data << std::endl;
+
+    
+    return b_red_ball_detected;
+ }
+
+void APIDemonstration::red_ball_detected() {
+    //qiLogInfo("module.example") << "Executing callback method on red ball detection event" << std::endl;
+    //std::cout << ".";
+    try {
+        ALCriticalSection section(fCallbackMutexRedBallDetection);
+        
+        if (b_red_ball_detected)
+            return;
+        b_red_ball_detected = true;
+
+        ALValue data = memory_proxy.getData("redBallDetected");
+        //std::cout << "Ball at "  << data[1][0] << "," << data[1][1] << std::endl;
+    }
+    catch (const ALError& e) {
+        qiLogError("module.example") << e.what() << std::endl;
+    }
 }

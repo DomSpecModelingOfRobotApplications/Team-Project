@@ -5,7 +5,7 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            name="Do something amazing"
+            name="Run"
             categoryId="NaoPlugin.commands.category"
             id="NaoPlugin.commands.sampleCommand">
       </command>

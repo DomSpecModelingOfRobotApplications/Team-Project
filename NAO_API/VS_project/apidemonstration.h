@@ -1,9 +1,25 @@
 #ifndef APIDEMONSTRATION_H
 #define APIDEMONSTRATION_H
 
-#include <boost/shared_ptr.hpp>
-#include <alcommon/almodule.h>
+#include <iostream>
 #include <string>
+#include <vector>
+
+//#include <boost/thread/thread.hpp>
+#include <boost/shared_ptr.hpp>
+
+#include <qi/log.hpp>
+#include <qi/os.hpp>
+
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+#include <alcommon/almodule.h>
+#include <alcommon/albroker.h>
+#include <althread/alcriticalsection.h>
+#include <alvalue/alvalue.h>
+#include <alvision/alimage.h>
+#include <alvision/alvisiondefinitions.h>
 
 #include <alproxies/almemoryproxy.h>
 #include <alproxies/altexttospeechproxy.h>
@@ -12,9 +28,12 @@
 #include <alproxies/alphotocaptureproxy.h>
 #include <alproxies/alrobotpostureproxy.h>
 #include <alproxies/alvideodeviceproxy.h>
-#include <althread/almutex.h>
+#include <alproxies/alredballdetectionproxy.h>
 #include <alproxies/alfacedetectionproxy.h>
 #include <alproxies/aldarknessdetectionproxy.h>
+
+#include <althread/almutex.h>
+#include <alerror/alerror.h>
 
 namespace AL {
     // This is a forward declaration of AL:ALBroker which
@@ -67,7 +86,11 @@ public:
     void subscribe_to_event();
     void unsubscribe_to_event();
     void onRightBumperPressed();
+    void _get_control(bool *die);
     void get_visual();
+
+    bool detect_red_ball(const float& time);
+    void red_ball_detected();
     
     void face_detection();
     void face_detected();
@@ -90,11 +113,12 @@ private:
 
     float haste;
 
+    bool b_red_ball_detected;
     bool b_face_detected;
 
     boost::shared_ptr<AL::ALMutex> fCallbackMutexBumper;
     boost::shared_ptr<AL::ALMutex> fCallbackMutexFaceDetection;
     boost::shared_ptr<AL::ALMutex> fCallbackMutexDarknessDetection;
-
+    boost::shared_ptr<AL::ALMutex> fCallbackMutexRedBallDetection;
 };
 #endif // APIDEMONSTRATION_H
