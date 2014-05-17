@@ -17,12 +17,12 @@ void APIDemonstration::script()
     //not_these_droids();
     //bow();
     //face_detection();
-   bool face = is_it_a_face(5);
-   if (face)
-       say_phrase("A face is detected", "English");
-   else 
-       say_phrase("It is not a face", "English");
-   // darkness_detection();
+    //bool face = is_it_a_face(5);
+    //if (face)
+    //    say_phrase("A face is detected", "English");
+    //else 
+    //    say_phrase("It is not a face", "English");
+    //darkness_detection();
     //darkness_detection();
     //disagree();
     //agree();
@@ -32,4 +32,8 @@ void APIDemonstration::script()
     //    std::cout << "Yepp" << std::endl;
     //else
     //    std::cout << "Nope" << std::endl;
+    if (detect_obstacle(3))
+        std::cout << "Yepp" << std::endl;
+    else
+        std::cout << "Nope" << std::endl;
 }

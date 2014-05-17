@@ -89,8 +89,13 @@ public:
     void _get_control(bool *die);
     void get_visual();
 
-    bool detect_red_ball(const float& time);
+    bool detect_red_ball(const float& time = 1.0);
     void red_ball_detected();
+
+    bool detect_obstacle(const float& time = 1.0);
+    void obstacle_detected(const std::string& eventName, 
+                           const float& dist, 
+                           const std::string& subscriberIdentifier);
     
     void face_detection();
     void face_detected();
@@ -115,10 +120,12 @@ private:
 
     bool b_red_ball_detected;
     bool b_face_detected;
+    bool b_obstacle_detected;
 
     boost::shared_ptr<AL::ALMutex> fCallbackMutexBumper;
     boost::shared_ptr<AL::ALMutex> fCallbackMutexFaceDetection;
     boost::shared_ptr<AL::ALMutex> fCallbackMutexDarknessDetection;
     boost::shared_ptr<AL::ALMutex> fCallbackMutexRedBallDetection;
+    boost::shared_ptr<AL::ALMutex> fCallbackMutexObstacleDetection;
 };
 #endif // APIDEMONSTRATION_H

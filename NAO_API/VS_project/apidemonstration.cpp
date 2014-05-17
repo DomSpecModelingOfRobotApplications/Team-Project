@@ -48,6 +48,9 @@ APIDemonstration::APIDemonstration(boost::shared_ptr<ALBroker> broker, const std
     functionName("red_ball_detected", getName(), "Method called when a red ball is detected.");
     BIND_METHOD(APIDemonstration::red_ball_detected);
 
+    functionName("obstacle_detected", getName(), "Method called when an obstacle is detected.");
+    BIND_METHOD(APIDemonstration::obstacle_detected);
+
     // If you had other methods, you could bind them here...
     /** Bound methods can only take const ref arguments of basic types,
     * or AL::ALValue or return basic types or an AL::ALValue.
@@ -428,7 +431,7 @@ void APIDemonstration::bow() {
     move_joints(n, p, t, true, "Good afternoon!", 2);
 }
 
-bool APIDemonstration::is_it_a_face(int time ) {
+bool APIDemonstration::is_it_a_face(int time) {
     b_face_detected = false;
     face_detection();
     qi::os::sleep(time);
@@ -540,7 +543,6 @@ bool APIDemonstration::detect_red_ball(const float& time) {
     //}
     //std::cout << data << std::endl;
 
-    
     return b_red_ball_detected;
  }
 
@@ -556,6 +558,44 @@ void APIDemonstration::red_ball_detected() {
 
         ALValue data = memory_proxy.getData("redBallDetected");
         //std::cout << "Ball at "  << data[1][0] << "," << data[1][1] << std::endl;
+    }
+    catch (const ALError& e) {
+        qiLogError("module.example") << e.what() << std::endl;
+    }
+}
+
+bool APIDemonstration::detect_obstacle(const float& time) {
+    b_obstacle_detected = false;
+
+    qiLogInfo("module.example") << "Subscribing to obstacle detection events." << std::endl;
+    try {
+        fCallbackMutexObstacleDetection = ALMutex::createALMutex();
+        memory_proxy.subscribeToEvent("SonarLeftDetected", getName(), "obstacle_detected");
+        memory_proxy.subscribeToEvent("SonarRightDetected", getName(), "obstacle_detected");
+    }
+    catch (const ALError& e) {
+        qiLogError("module.example") << e.what() << std::endl;
+    }
+    qi::os::sleep(time);
+
+    qiLogInfo("module.example") << "Unsubscribing to obstacle detection event." << std::endl;
+    memory_proxy.unsubscribeToEvent("SonarLeftDetected", getName());
+    memory_proxy.unsubscribeToEvent("SonarRightDetected", getName());
+    
+    return b_obstacle_detected;
+ }
+
+void APIDemonstration::obstacle_detected(const std::string& eventName, 
+                                         const float& dist, 
+                                         const std::string& subscriberIdentifier) {
+    //qiLogInfo("module.example") << "Executing callback method on red ball detection event" << std::endl;
+    //std::cout << eventName;
+    try {
+        ALCriticalSection section(fCallbackMutexObstacleDetection);
+        
+        if (b_obstacle_detected)
+            return;
+        b_obstacle_detected = true;
     }
     catch (const ALError& e) {
         qiLogError("module.example") << e.what() << std::endl;
