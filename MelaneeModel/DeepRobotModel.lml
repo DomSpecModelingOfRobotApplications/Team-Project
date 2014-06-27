@@ -870,7 +870,7 @@
               <content xmi:type="textdef:Value" xmi:id="_Hu38JeBSEeOa7-uUvI_Mxw" expression="post"/>
             </dslVisualizer>
           </visualizer>
-          <feature xmi:type="PLM:Attribute" xmi:id="_okjOIOBREeOa7-uUvI_Mxw" name="time" durability="1" mutability="1">
+          <feature xmi:type="PLM:Attribute" xmi:id="_okjOIOBREeOa7-uUvI_Mxw" name="time" durability="1" mutability="1" datatype="Real">
             <visualizer xmi:type="PLM:LMLVisualizer" xmi:id="_okjOIeBREeOa7-uUvI_Mxw">
               <attributes>name= default</attributes>
               <attributes>durability= default</attributes>
