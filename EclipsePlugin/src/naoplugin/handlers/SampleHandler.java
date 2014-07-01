@@ -5,26 +5,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
-import java.net.URL;
-
-import naoplugin.wizard.MyWizard;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Plugin;
-import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
-import org.eclipse.ui.handlers.HandlerUtil;
 import org.osgi.framework.Bundle;
 
 /**
@@ -47,29 +38,23 @@ public class SampleHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
 
-			IWorkbenchWindow window = HandlerUtil
-					.getActiveWorkbenchWindowChecked(event);
+			MessageConsole myConsole = findConsole("Nao SDK");
+			myConsole.activate();
+			MessageConsoleStream out = myConsole.newMessageStream();
+			out.println("Compiling for Nao ...");
 
-			Plugin plugin = Platform.getPlugin("NaoPlugin");
-			IPath stateLocation = plugin.getStateLocation();
+			executeCommand("mvn", null);
 
-			Bundle bundle = Platform.getBundle("NaoPlugin");
+			executeCommand("start test.bat", resolveBundleFile("cmds"));
 
-			URL fileURL = bundle.getEntry("icons/sample.gif");
-			File file = null;
-			try {
-				file = new File(FileLocator.resolve(fileURL).toURI());
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+			// executeCommand("C:/Users/Fabian/text.bat");
 
-			executeCommand("ls " + stateLocation.toOSString());
-
-			executeCommand(String.format("unzip %s -d %s",
-					resolveBundleFile("files/datalog-2.4.zip"),
-					stateLocation.toOSString()));
-
-			executeCommand("ls " + stateLocation.toOSString());
+			//
+			// executeCommand(String.format("unzip %s -d %s",
+			// resolveBundleFile("files/datalog-2.4.zip"),
+			// stateLocation.toOSString()));
+			//
+			// executeCommand("ls " + stateLocation.toOSString());
 
 			/*
 			 * WizardDialog wizardDialog = new WizardDialog(window.getShell(),
@@ -87,32 +72,32 @@ public class SampleHandler extends AbstractHandler {
 		return null;
 	}
 
-	private String resolveBundleFile(String path) throws URISyntaxException,
+	private File resolveBundleFile(String path) throws URISyntaxException,
 			IOException {
 		Bundle bundle = Platform.getBundle("NaoPlugin");
-		return new File(FileLocator.resolve(bundle.getEntry(path)).toURI())
-				.toString();
+		return new File(FileLocator.resolve(bundle.getEntry(path)).getFile());
 	}
 
-	private void executeCommand(String command) {
+	private void executeCommand(String file, File dir) {
 		try {
 
 			MessageConsole myConsole = findConsole("Nao SDK");
 			myConsole.activate();
 			MessageConsoleStream out = myConsole.newMessageStream();
 
-			out.println("Executing command: " + command);
+			out.println("Executing command: ");
 			out.println("---------------------------------");
 
 			// Execute command
-			Process child = Runtime.getRuntime().exec(command);
-			int termination = child.waitFor();
-			// Get output stream to write from it
+			Process child = Runtime.getRuntime().exec("cmd /c " + file, null,
+					dir);
+
 			copyStream(child.getInputStream(), out);
 			copyStream(child.getErrorStream(), out);
 
-			out.println("");
-			out.println("");
+			int termination = child.waitFor();
+			// Get output stream to write from it
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
