@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.util.Date;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -25,6 +27,9 @@ import org.osgi.framework.Bundle;
  * @see org.eclipse.core.commands.AbstractHandler
  */
 public class SampleHandler extends AbstractHandler {
+
+	public static final String BUILD_OUTPUT = "/Users/fabiankajzar/Desktop/melanee_build_output.txt";
+
 	/**
 	 * The constructor.
 	 */
@@ -38,23 +43,26 @@ public class SampleHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		try {
 
+			// setup console
 			MessageConsole myConsole = findConsole("Nao SDK");
 			myConsole.activate();
 			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println("Compiling for Nao ...");
 
-			executeCommand("mvn", null);
+			// write file
+			PrintWriter writer = writeFile(BUILD_OUTPUT);
+			writer.println("Melanee triggered build");
+			writer.println("------------------------");
+			writer.println(new Date().toGMTString());
+			writer.close();
 
+			// invoke build
+			// TODO
+			executeCommand("git", null);
+
+			// execute run on NAO
+			// TODO
 			executeCommand("start test.bat", resolveBundleFile("cmds"));
-
-			// executeCommand("C:/Users/Fabian/text.bat");
-
-			//
-			// executeCommand(String.format("unzip %s -d %s",
-			// resolveBundleFile("files/datalog-2.4.zip"),
-			// stateLocation.toOSString()));
-			//
-			// executeCommand("ls " + stateLocation.toOSString());
 
 			/*
 			 * WizardDialog wizardDialog = new WizardDialog(window.getShell(),
@@ -70,6 +78,13 @@ public class SampleHandler extends AbstractHandler {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	private PrintWriter writeFile(String path) throws Exception {
+		// write file
+		File target = new File(path);
+		PrintWriter writer = new PrintWriter(target.toString(), "UTF-8");
+		return writer;
 	}
 
 	private File resolveBundleFile(String path) throws URISyntaxException,
@@ -88,9 +103,14 @@ public class SampleHandler extends AbstractHandler {
 			out.println("Executing command: ");
 			out.println("---------------------------------");
 
+			String terminalCommand = "cmd /c ";
+			if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+				terminalCommand = "/bin/bash -c ";
+			}
+
 			// Execute command
-			Process child = Runtime.getRuntime().exec("cmd /c " + file, null,
-					dir);
+			Process child = Runtime.getRuntime().exec(terminalCommand + file,
+					null, dir);
 
 			copyStream(child.getInputStream(), out);
 			copyStream(child.getErrorStream(), out);
