@@ -28,7 +28,11 @@ import org.osgi.framework.Bundle;
  */
 public class SampleHandler extends AbstractHandler {
 
-	public static final String BUILD_OUTPUT = "/Users/fabiankajzar/Desktop/melanee_build_output.txt";
+	public static final String MELANEE_OUTPUT = "/Users/fabiankajzar/Desktop/melanee_build_output.txt";
+	public static final String BUILD_TOOLS = "/Users/fabiankajzar/";
+	public static final String BUILD_COMMAND = "git status";
+	public static final String EXECUTION_FOLDER = "/Users/fabiankajzar";
+	public static final String EXECUTION_COMMAND = "naosdk run";
 
 	/**
 	 * The constructor.
@@ -50,7 +54,7 @@ public class SampleHandler extends AbstractHandler {
 			out.println("Compiling for Nao ...");
 
 			// write file
-			PrintWriter writer = writeFile(BUILD_OUTPUT);
+			PrintWriter writer = writeFile(MELANEE_OUTPUT);
 			writer.println("Melanee triggered build");
 			writer.println("------------------------");
 			writer.println(new Date().toGMTString());
@@ -58,22 +62,11 @@ public class SampleHandler extends AbstractHandler {
 
 			// invoke build
 			// TODO
-			executeCommand("git", null);
+			executeCommand(BUILD_COMMAND, new File(BUILD_TOOLS));
 
 			// execute run on NAO
 			// TODO
-			executeCommand("start test.bat", resolveBundleFile("cmds"));
-
-			/*
-			 * WizardDialog wizardDialog = new WizardDialog(window.getShell(),
-			 * new MyWizard());
-			 * 
-			 * if (wizardDialog.open() == Window.OK) {
-			 * System.out.println("Ok pressed"); } else {
-			 * System.out.println("Cancel pressed"); } /*
-			 * MessageDialog.openInformation(window.getShell(),
-			 * "Uni Mannheim - Robot Project", "Hello, Team :)");
-			 */
+			executeCommand(EXECUTION_COMMAND, new File(EXECUTION_FOLDER));// resolveBundleFile("cmds"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
