@@ -55,9 +55,20 @@ public class SampleHandler extends AbstractHandler {
 
 			// write file
 			PrintWriter writer = writeFile(MELANEE_OUTPUT);
-			writer.println("Melanee triggered build");
-			writer.println("------------------------");
-			writer.println(new Date().toGMTString());
+
+			// template pre
+			writer.println("#include \"apidemonstration.h\"");
+			writer.println("// Melanee triggered build");
+			writer.println("// ------------------------");
+			writer.println("// " + new Date().toGMTString());
+
+			writer.println("void APIDemonstration::script()");
+			writer.println("{");
+
+			writer.print("agree();");
+
+			// template post
+			writer.println("}");
 			writer.close();
 
 			// invoke build
