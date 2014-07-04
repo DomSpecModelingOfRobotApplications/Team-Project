@@ -80,3 +80,4 @@ $ cat .qi/worktree.xml
   <project src="$PROJECT_FOLDER_NAME" />
 </worktree>
 
+HKEY_CURRENT_USER\Software\Aldebaran Robotics\Choregraphe\LicenceValidation

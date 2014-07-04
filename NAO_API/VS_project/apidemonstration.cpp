@@ -100,12 +100,12 @@ void APIDemonstration::init() {
     }*/
     qiLogInfo("module.example") << "Initialization complete!" << std::endl;
     haste = 0.7f;
-    std::string repeat;
-    do {
+    // std::string repeat;
+    // do {
         script();
-        std::cout << "Enter y to repeat, n to exit" << std::endl;
-        std::cin >> repeat;
-    } while (repeat.find_first_of("Yy") != std::string::npos);
+    //     std::cout << "Enter y to repeat, n to exit" << std::endl;
+    //     std::cin >> repeat;
+    // } while (repeat.find_first_of("Yy") != std::string::npos);
 }
 
 void APIDemonstration::rest() {

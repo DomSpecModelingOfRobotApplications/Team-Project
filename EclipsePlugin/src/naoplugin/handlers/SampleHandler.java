@@ -28,11 +28,11 @@ import org.osgi.framework.Bundle;
  */
 public class SampleHandler extends AbstractHandler {
 
-	public static final String MELANEE_OUTPUT = "/Users/fabiankajzar/Desktop/melanee_build_output.txt";
-	public static final String BUILD_TOOLS = "/Users/fabiankajzar/";
-	public static final String BUILD_COMMAND = "git status";
-	public static final String EXECUTION_FOLDER = "/Users/fabiankajzar";
-	public static final String EXECUTION_COMMAND = "naosdk run";
+	public static final String MELANEE_OUTPUT = "D:\\Mannheim\\TeamProject\\Team-Project\\NAO_API\\VS_project\\script.cpp";
+	public static final String BUILD_TOOLS = "D:\\Mannheim\\TeamProject\\Team-Project\\NAO_API\\VS_project";
+	public static final String BUILD_COMMAND = "qibuild make --release";
+	public static final String EXECUTION_FOLDER = "D:\\Mannheim\\TeamProject\\Team-Project\\NAO_API\\VS_project\\build-naoqi-sdk\\sdk\\bin";
+	public static final String EXECUTION_COMMAND = "apidemonstration.exe --pip 127.0.0.1 --pport 9559";
 
 	/**
 	 * The constructor.
