@@ -21,7 +21,7 @@
       </children>
       <children xsi:type="M2TWeaving:TextElement" offset="29" length="4" text=");&#xD;&#xA;"/>
       <children xsi:type="M2TWeaving:WeavingLink">
-        <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_iO-HANq9EeOrBZsLBLrPug"/>
+        <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_de_M4AXKEeS5EaTxJ97PMw"/>
         <children xsi:type="M2TWeaving:WeavingLink">
           <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_iDv7MNrNEeOl4O-CI3MuVw"/>
           <children xsi:type="M2TWeaving:WeavingLink">
@@ -36,35 +36,36 @@
         </children>
         <children xsi:type="M2TWeaving:TextElement" offset="53" length="17" text="=detect_obstacle("/>
         <children xsi:type="M2TWeaving:WeavingLink">
-          <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_XPpX0OBREeOa7-uUvI_Mxw"/>
+          <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_dfQ5sAXKEeS5EaTxJ97PMw"/>
+          <children xsi:type="M2TWeaving:TextElement" offset="70" length="1" text="5"/>
         </children>
-        <children xsi:type="M2TWeaving:TextElement" offset="70" length="4" text=");&#xD;&#xA;"/>
+        <children xsi:type="M2TWeaving:TextElement" offset="71" length="4" text=");&#xD;&#xA;"/>
         <children xsi:type="M2TWeaving:WeavingLink">
           <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_Hq-TMLQWEeOy7YyPGLNp3g"/>
-          <children xsi:type="M2TWeaving:TextElement" offset="74" length="3" text="if("/>
+          <children xsi:type="M2TWeaving:TextElement" offset="75" length="3" text="if("/>
           <children xsi:type="M2TWeaving:WeavingLink">
-            <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_HrROILQWEeOy7YyPGLNp3g"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="77" length="12" text="detectedBall"/>
+            <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_G3__wNrGEeON2dcg6S_kNA"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="78" length="12" text="detectedBall"/>
           </children>
-          <children xsi:type="M2TWeaving:TextElement" offset="89" length="4" text="){&#xD;&#xA;"/>
+          <children xsi:type="M2TWeaving:TextElement" offset="90" length="4" text="){&#xD;&#xA;"/>
           <children xsi:type="M2TWeaving:WeavingLink">
             <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_i_LScNxeEeOg4fo_q0ga3g"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="93" length="10" text="agree();&#xD;&#xA;"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="94" length="10" text="agree();&#xD;&#xA;"/>
           </children>
-          <children xsi:type="M2TWeaving:TextElement" offset="103" length="10" text="}&#xD;&#xA;else{&#xD;&#xA;"/>
+          <children xsi:type="M2TWeaving:TextElement" offset="104" length="10" text="}&#xD;&#xA;else{&#xD;&#xA;"/>
           <children xsi:type="M2TWeaving:WeavingLink">
             <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_Un2nkNxeEeOg4fo_q0ga3g"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="113" length="13" text="disagree();&#xD;&#xA;"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="114" length="13" text="disagree();&#xD;&#xA;"/>
           </children>
-          <children xsi:type="M2TWeaving:TextElement" offset="126" length="3" text="}&#xD;&#xA;"/>
+          <children xsi:type="M2TWeaving:TextElement" offset="127" length="3" text="}&#xD;&#xA;"/>
           <children xsi:type="M2TWeaving:WeavingLink">
             <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_AMxOANxfEeOg4fo_q0ga3g"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="129" length="9" text="posture(&quot;"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="130" length="9" text="posture(&quot;"/>
             <children xsi:type="M2TWeaving:WeavingLink">
               <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_ANBFoNxfEeOg4fo_q0ga3g"/>
-              <children xsi:type="M2TWeaving:TextElement" offset="138" length="8" text="SitRelax"/>
+              <children xsi:type="M2TWeaving:TextElement" offset="139" length="8" text="SitRelax"/>
             </children>
-            <children xsi:type="M2TWeaving:TextElement" offset="146" length="5" text="&quot;);&#xD;&#xA;"/>
+            <children xsi:type="M2TWeaving:TextElement" offset="147" length="5" text="&quot;);&#xD;&#xA;"/>
           </children>
         </children>
       </children>
