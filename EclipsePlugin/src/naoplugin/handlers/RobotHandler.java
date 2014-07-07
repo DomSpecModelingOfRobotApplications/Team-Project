@@ -26,7 +26,7 @@ import org.osgi.framework.Bundle;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class SampleHandler extends AbstractHandler {
+public class RobotHandler extends AbstractHandler {
 
 	public static final String MELANEE_OUTPUT = "D:\\Mannheim\\TeamProject\\Team-Project\\NAO_API\\VS_project\\script.cpp";
 	public static final String BUILD_TOOLS = "D:\\Mannheim\\TeamProject\\Team-Project\\NAO_API\\VS_project";
@@ -37,7 +37,7 @@ public class SampleHandler extends AbstractHandler {
 	/**
 	 * The constructor.
 	 */
-	public SampleHandler() {
+	public RobotHandler() {
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class SampleHandler extends AbstractHandler {
 			writer.println("void APIDemonstration::script()");
 			writer.println("{");
 
-			writer.print("agree();");
+			writer.println("agree();");
 
 			// template post
 			writer.println("}");
