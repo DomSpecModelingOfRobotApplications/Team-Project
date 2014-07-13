@@ -167,18 +167,10 @@
             <attributes>ProximityClassification= 1</attributes>
             <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
-            <dslVisualizer xmi:type="graphdef:GraphicalDSLVisualizer" xmi:id="_7IUi0Aj3EeS0fYnTxbEoYA">
-              <content xmi:type="graphdef:RoundedRectangle" xmi:id="_7IUi0Qj3EeS0fYnTxbEoYA" width="150" radius="20">
-                <layout xmi:type="graphdef:TableLayout" xmi:id="_7IUi0gj3EeS0fYnTxbEoYA" columns="2" equalWitdth="false">
-                  <content xmi:type="graphdef:StaticLabel" xmi:id="_7IUi0wj3EeS0fYnTxbEoYA" name="title" text="Title">
-                    <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_7IUi1Aj3EeS0fYnTxbEoYA" grabHorizontalExcess="true" grabVerticalExcess="true" horizontalAlignment="Center" verticalAlignment="Center"/>
-                  </content>
-                  <content xmi:type="graphdef:SVGFigure" xmi:id="_7IUi1Qj3EeS0fYnTxbEoYA" name="icon" documentURI="/MelaneeModel/figures/noIcon.svg" width="16" height="16">
-                    <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_7IUi1gj3EeS0fYnTxbEoYA" grabHorizontalExcess="true" grabVerticalExcess="true" horizontalAlignment="Center" verticalAlignment="Center"/>
-                  </content>
-                  <content xmi:type="graphdef:Rectangle" xmi:id="_PBZpQAj8EeS0fYnTxbEoYA" name="additionalInfo" outline="false" outlineWidth="0">
-                    <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_PlVcwAj8EeS0fYnTxbEoYA" columnSpan="2" grabHorizontalExcess="true" grabVerticalExcess="true"/>
-                  </content>
+            <dslVisualizer xmi:type="graphdef:GraphicalDSLVisualizer" xmi:id="_M4DiwAW9EeSUvaZPGx20Uw">
+              <content xmi:type="graphdef:RoundedRectangle" xmi:id="_NqJuEAW9EeSUvaZPGx20Uw" radius="20">
+                <layout xmi:type="graphdef:TableLayout" xmi:id="_PFeckAW9EeSUvaZPGx20Uw">
+                  <content xmi:type="graphdef:StaticLabel" xmi:id="_QJOYkAW9EeSUvaZPGx20Uw" name="title" text="a"/>
                 </layout>
               </content>
             </dslVisualizer>
@@ -318,21 +310,20 @@
             <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
             <dslVisualizer xmi:type="graphdef:GraphicalDSLVisualizer" xmi:id="_IQ7_MNkyEeOK1LcKg7b83w">
-              <content xmi:type="graphdef:StaticLabel" xmi:id="_OmJ1UNplEeO-h8Gui6VLfQ" name="title" aspect="true" text="Move">
-                <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_PlrzUAkCEeSHv8HrD8HAKg" grabHorizontalExcess="true" grabVerticalExcess="true" horizontalAlignment="Center"/>
-              </content>
-              <content xmi:type="graphdef:SVGFigure" xmi:id="_qZ-g8Nq6EeOqr8arf_J5_g" name="icon" aspect="true" documentURI="/MelaneeModel/figures/Move.svg" width="16" height="16">
-                <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_bdrrUNq7EeOqr8arf_J5_g" horizontalAlignment="End" verticalAlignment="Center"/>
-              </content>
-              <content xmi:type="graphdef:Rectangle" xmi:id="_DHzLwAkBEeSHv8HrD8HAKg" name="additionalInfo" aspect="true" outline="false" outlineWidth="0">
-                <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_dei2AAkBEeSHv8HrD8HAKg" columnSpan="2"/>
-                <layout xmi:type="graphdef:TableLayout" xmi:id="_KFjoEAkBEeSHv8HrD8HAKg" columns="6" equalWitdth="false">
-                  <content xmi:type="graphdef:StaticLabel" xmi:id="_KFjoEQkBEeSHv8HrD8HAKg" aspect="true" text="x="/>
-                  <content xmi:type="graphdef:ExpressionLabel" xmi:id="_KFjoEgkBEeSHv8HrD8HAKg" aspect="true" expression="x"/>
-                  <content xmi:type="graphdef:StaticLabel" xmi:id="_KFjoEwkBEeSHv8HrD8HAKg" aspect="true" text="; y="/>
-                  <content xmi:type="graphdef:ExpressionLabel" xmi:id="_KFjoFAkBEeSHv8HrD8HAKg" aspect="true" expression="y"/>
-                  <content xmi:type="graphdef:StaticLabel" xmi:id="_KFjoFQkBEeSHv8HrD8HAKg" aspect="true" text="; angle="/>
-                  <content xmi:type="graphdef:ExpressionLabel" xmi:id="_KFjoFgkBEeSHv8HrD8HAKg" aspect="true" expression="angle"/>
+              <content xmi:type="graphdef:RoundedRectangle" xmi:id="_KXdm0NkyEeOK1LcKg7b83w" width="150" radius="20">
+                <layout xmi:type="graphdef:TableLayout" xmi:id="_PjdqQNk1EeOK1LcKg7b83w" columns="6" equalWitdth="false">
+                  <content xmi:type="graphdef:StaticLabel" xmi:id="_OmJ1UNplEeO-h8Gui6VLfQ" text="Move">
+                    <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_QB720NplEeO-h8Gui6VLfQ" columnSpan="5" grabHorizontalExcess="true" grabVerticalExcess="true" horizontalAlignment="Center"/>
+                  </content>
+                  <content xmi:type="graphdef:SVGFigure" xmi:id="_qZ-g8Nq6EeOqr8arf_J5_g" documentURI="/MelaneeModel/figures/Move.svg" width="16" height="16">
+                    <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_bdrrUNq7EeOqr8arf_J5_g" grabHorizontalExcess="true" grabVerticalExcess="true" horizontalAlignment="Center" verticalAlignment="Center"/>
+                  </content>
+                  <content xmi:type="graphdef:StaticLabel" xmi:id="_dWSdoNq5EeOqr8arf_J5_g" text="x="/>
+                  <content xmi:type="graphdef:ExpressionLabel" xmi:id="_QzypsNk1EeOK1LcKg7b83w" expression="x"/>
+                  <content xmi:type="graphdef:StaticLabel" xmi:id="_hftxINq5EeOqr8arf_J5_g" text="; y="/>
+                  <content xmi:type="graphdef:ExpressionLabel" xmi:id="_hftxIdq5EeOqr8arf_J5_g" expression="y"/>
+                  <content xmi:type="graphdef:StaticLabel" xmi:id="_h5_5YNq5EeOqr8arf_J5_g" text="; angle="/>
+                  <content xmi:type="graphdef:ExpressionLabel" xmi:id="_h5_5Ydq5EeOqr8arf_J5_g" expression="angle"/>
                 </layout>
               </content>
             </dslVisualizer>
@@ -976,11 +967,15 @@
             <attributes>DSLRendering= false</attributes>
             <attributes>ProximityIndication= name:1</attributes>
             <dslVisualizer xmi:type="graphdef:GraphicalDSLVisualizer" xmi:id="_EFpysOBSEeOa7-uUvI_Mxw">
-              <content xmi:type="graphdef:StaticLabel" xmi:id="_EFpys-BSEeOa7-uUvI_Mxw" name="title" aspect="true" text="DetectBall">
-                <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_EFpytOBSEeOa7-uUvI_Mxw" grabHorizontalExcess="true" grabVerticalExcess="true" horizontalAlignment="Center" verticalAlignment="Center"/>
-              </content>
-              <content xmi:type="graphdef:SVGFigure" xmi:id="_EFpyteBSEeOa7-uUvI_Mxw" name="icon" aspect="true" documentURI="/MelaneeModel/figures/DetectBall.svg" width="16" height="16">
-                <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_EFpytuBSEeOa7-uUvI_Mxw" grabHorizontalExcess="true" grabVerticalExcess="true" horizontalAlignment="Center" verticalAlignment="Center"/>
+              <content xmi:type="graphdef:RoundedRectangle" xmi:id="_EFpyseBSEeOa7-uUvI_Mxw" width="150" radius="20">
+                <layout xmi:type="graphdef:TableLayout" xmi:id="_EFpysuBSEeOa7-uUvI_Mxw" columns="2" equalWitdth="false">
+                  <content xmi:type="graphdef:StaticLabel" xmi:id="_EFpys-BSEeOa7-uUvI_Mxw" text="DetectBall">
+                    <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_EFpytOBSEeOa7-uUvI_Mxw" grabHorizontalExcess="true" grabVerticalExcess="true" horizontalAlignment="Center" verticalAlignment="Center"/>
+                  </content>
+                  <content xmi:type="graphdef:SVGFigure" xmi:id="_EFpyteBSEeOa7-uUvI_Mxw" documentURI="/MelaneeModel/figures/DetectBall.svg" width="16" height="16">
+                    <layoutInformation xmi:type="graphdef:TableLayoutInformation" xmi:id="_EFpytuBSEeOa7-uUvI_Mxw" grabHorizontalExcess="true" grabVerticalExcess="true" horizontalAlignment="Center" verticalAlignment="Center"/>
+                  </content>
+                </layout>
               </content>
             </dslVisualizer>
             <dslVisualizer xmi:type="textdef:TextualDSLVisualizer" xmi:id="_Hu38IOBSEeOa7-uUvI_Mxw">
@@ -2203,7 +2198,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cE-KJAXDEeSl-PpNhDLftg" x="674" y="11"/>
             </children>
           </children>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eZnRwZYvEeOhjpu65D91-A" width="1387" height="304"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eZnRwZYvEeOhjpu65D91-A" width="1317" height="304"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_owwEsJYvEeOhjpu65D91-A" type="3097" element="_ovMlgJYvEeOhjpu65D91-A" fontName="Segoe UI">
           <children xmi:type="notation:DecorationNode" xmi:id="_owwEspYvEeOhjpu65D91-A" type="5320"/>
@@ -2687,7 +2682,7 @@
                 <styles xmi:type="notation:SortingStyle" xmi:id="_p_kK9dq8EeOrBZsLBLrPug"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_p_kK9tq8EeOrBZsLBLrPug"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_p_kK99q8EeOrBZsLBLrPug" visible="false" type="7049">
+              <children xmi:type="notation:BasicCompartment" xmi:id="_p_kK99q8EeOrBZsLBLrPug" type="7049">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_p_kK-Nq8EeOrBZsLBLrPug"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_p_kK-dq8EeOrBZsLBLrPug"/>
               </children>
@@ -3055,7 +3050,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h1u4xAXMEeSzU_izbAVN-Q" x="914" y="468"/>
             </children>
           </children>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_owwEsZYvEeOhjpu65D91-A" y="304" width="1387" height="672"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_owwEsZYvEeOhjpu65D91-A" y="304" width="1317" height="606"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_87ijAJYvEeOhjpu65D91-A" type="3097" element="_85NnwJYvEeOhjpu65D91-A" fontName="Segoe UI">
           <children xmi:type="notation:DecorationNode" xmi:id="_87ijApYvEeOhjpu65D91-A" type="5320"/>
@@ -3103,11 +3098,11 @@
                 <styles xmi:type="notation:SortingStyle" xmi:id="_2MPdea5tEeOkrq5zxpBIGw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_2MQEgK5tEeOkrq5zxpBIGw"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_2MQEga5tEeOkrq5zxpBIGw" type="7059">
+              <children xmi:type="notation:BasicCompartment" xmi:id="_2MQEga5tEeOkrq5zxpBIGw" visible="false" type="7059">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_2MQEgq5tEeOkrq5zxpBIGw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_2MQEg65tEeOkrq5zxpBIGw"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_2MQEhK5tEeOkrq5zxpBIGw" type="7060"/>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_2MQEhK5tEeOkrq5zxpBIGw" visible="false" type="7060"/>
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_2MO2Ya5tEeOkrq5zxpBIGw"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_2MO2Yq5tEeOkrq5zxpBIGw" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_2MO2Y65tEeOkrq5zxpBIGw"/>
@@ -3189,11 +3184,11 @@
                 <styles xmi:type="notation:SortingStyle" xmi:id="_UoKJkdxeEeOg4fo_q0ga3g"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_UoKJktxeEeOg4fo_q0ga3g"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_UoKJk9xeEeOg4fo_q0ga3g" type="7059">
+              <children xmi:type="notation:BasicCompartment" xmi:id="_UoKJk9xeEeOg4fo_q0ga3g" visible="false" type="7059">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_UoKJlNxeEeOg4fo_q0ga3g"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_UoKJldxeEeOg4fo_q0ga3g"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_UoKJltxeEeOg4fo_q0ga3g" type="7060"/>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_UoKJltxeEeOg4fo_q0ga3g" visible="false" type="7060"/>
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_UoIUYdxeEeOg4fo_q0ga3g"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_UoIUYtxeEeOg4fo_q0ga3g" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_UoIUY9xeEeOg4fo_q0ga3g"/>
@@ -3215,11 +3210,11 @@
                 <styles xmi:type="notation:SortingStyle" xmi:id="_i_cYMdxeEeOg4fo_q0ga3g"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_i_cYMtxeEeOg4fo_q0ga3g"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_i_cYM9xeEeOg4fo_q0ga3g" type="7059">
+              <children xmi:type="notation:BasicCompartment" xmi:id="_i_cYM9xeEeOg4fo_q0ga3g" visible="false" type="7059">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_i_cYNNxeEeOg4fo_q0ga3g"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_i_cYNdxeEeOg4fo_q0ga3g"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_i_cYNtxeEeOg4fo_q0ga3g" type="7060"/>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_i_cYNtxeEeOg4fo_q0ga3g" visible="false" type="7060"/>
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_i_ajAdxeEeOg4fo_q0ga3g"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_i_ajAtxeEeOg4fo_q0ga3g" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_i_ajA9xeEeOg4fo_q0ga3g"/>
@@ -3268,11 +3263,11 @@
                 <styles xmi:type="notation:SortingStyle" xmi:id="_ANPvJNxfEeOg4fo_q0ga3g"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_ANPvJdxfEeOg4fo_q0ga3g"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_ANPvJtxfEeOg4fo_q0ga3g" type="7059">
+              <children xmi:type="notation:BasicCompartment" xmi:id="_ANPvJtxfEeOg4fo_q0ga3g" visible="false" type="7059">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_ANPvJ9xfEeOg4fo_q0ga3g"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_ANPvKNxfEeOg4fo_q0ga3g"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_ANPvKdxfEeOg4fo_q0ga3g" type="7060"/>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_ANPvKdxfEeOg4fo_q0ga3g" visible="false" type="7060"/>
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_ANOhAdxfEeOg4fo_q0ga3g"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_ANOhAtxfEeOg4fo_q0ga3g" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_ANOhA9xfEeOg4fo_q0ga3g"/>
@@ -3375,11 +3370,11 @@
                 <styles xmi:type="notation:SortingStyle" xmi:id="_dfXnYwXKEeS5EaTxJ97PMw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_dfXnZAXKEeS5EaTxJ97PMw"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_dfXnZQXKEeS5EaTxJ97PMw" type="7059">
+              <children xmi:type="notation:BasicCompartment" xmi:id="_dfXnZQXKEeS5EaTxJ97PMw" visible="false" type="7059">
                 <styles xmi:type="notation:SortingStyle" xmi:id="_dfXnZgXKEeS5EaTxJ97PMw"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_dfXnZwXKEeS5EaTxJ97PMw"/>
               </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_dfXnaAXKEeS5EaTxJ97PMw" type="7060"/>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_dfXnaAXKEeS5EaTxJ97PMw" visible="false" type="7060"/>
               <styles xmi:type="notation:DescriptionStyle" xmi:id="_dfXAUQXKEeS5EaTxJ97PMw"/>
               <styles xmi:type="notation:FontStyle" xmi:id="_dfXAUgXKEeS5EaTxJ97PMw" fontName="Segoe UI"/>
               <styles xmi:type="notation:FillStyle" xmi:id="_dfXAUwXKEeS5EaTxJ97PMw"/>
@@ -3455,7 +3450,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qZ4WBAXKEeS5EaTxJ97PMw" x="536" y="145"/>
             </children>
           </children>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_87ijAZYvEeOhjpu65D91-A" y="976" width="1387" height="403"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_87ijAZYvEeOhjpu65D91-A" y="910" width="1317" height="403"/>
         </children>
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_cSDIUZYvEeOhjpu65D91-A"/>
@@ -3857,7 +3852,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_RjFVYdxmEeO6qcTby2HTPg" x="-10" y="-10"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_RjFVYtxmEeO6qcTby2HTPg" type="6023">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_RjFVY9xmEeO6qcTby2HTPg" x="-17" y="16"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_RjFVY9xmEeO6qcTby2HTPg" x="10" y="10"/>
       </children>
       <styles xmi:type="notation:RoutingStyle" xmi:id="_RjEHQdxmEeO6qcTby2HTPg" routing="Rectilinear"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_RjEHQtxmEeO6qcTby2HTPg" fontName="Segoe UI"/>
@@ -4273,7 +4268,7 @@
         <layoutConstraint xmi:type="notation:Location" xmi:id="_h5QYwQXKEeS5EaTxJ97PMw" x="-10" y="-10"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_h5QYwgXKEeS5EaTxJ97PMw" type="6023">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_h5QYwwXKEeS5EaTxJ97PMw" x="-26" y="16"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_h5QYwwXKEeS5EaTxJ97PMw" x="10" y="10"/>
       </children>
       <styles xmi:type="notation:RoutingStyle" xmi:id="_h5PxsQXKEeS5EaTxJ97PMw" routing="Rectilinear"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_h5PxsgXKEeS5EaTxJ97PMw" fontName="Segoe UI"/>
@@ -4384,17 +4379,6 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_7AROkgXMEeSzU_izbAVN-Q" fontName="Segoe UI"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7AROkwXMEeSzU_izbAVN-Q" points="[0, -4, -733, -208]$[0, 0, -733, -204]$[734, 0, 1, -204]$[734, 163, 1, -41]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7ATDwAXMEeSzU_izbAVN-Q" id="NORTH"/>
-    </edges>
-    <edges xmi:type="notation:Edge" xmi:id="_LrkV8Ag4EeShtPOgmDONUw" visible="false" type="4026" element="_h1Q-sAXMEeSzU_izbAVN-Q" source="_h1u4wAXMEeSzU_izbAVN-Q" target="_Ep7PUOBQEeOa7-uUvI_Mxw">
-      <children xmi:type="notation:DecorationNode" xmi:id="_LrkV9Ag4EeShtPOgmDONUw" type="6016">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_LrkV9Qg4EeShtPOgmDONUw" x="10" y="10"/>
-      </children>
-      <children xmi:type="notation:DecorationNode" xmi:id="_LrkV9gg4EeShtPOgmDONUw" type="6017">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_LrkV9wg4EeShtPOgmDONUw" x="10" y="10"/>
-      </children>
-      <styles xmi:type="notation:RoutingStyle" xmi:id="_LrkV8Qg4EeShtPOgmDONUw" routing="Rectilinear"/>
-      <styles xmi:type="notation:FontStyle" xmi:id="_LrkV8gg4EeShtPOgmDONUw" fontName="Segoe UI"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LrkV8wg4EeShtPOgmDONUw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
     </edges>
   </notation:Diagram>
 </xmi:XMI>
