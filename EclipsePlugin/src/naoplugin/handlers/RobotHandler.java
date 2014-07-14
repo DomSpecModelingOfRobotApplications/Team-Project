@@ -18,10 +18,17 @@ import org.eclipse.ui.console.IConsole;
 import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
+import org.melanee.core.models.plm.PLM.PLMFactory;
+import org.melanee.textdsl.modeleditor.TextualVisualizationService;
+import org.melanee.textdsl.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelColorConstants;
+import org.melanee.textdsl.modeleditor.editor.sourceviewerconfiguration.MultiLevelModelPartitionScanner;
+import org.melanee.textdsl.modeleditor.editor.sourceviewerconfiguration.MultilevelLiteralScanner;
+import org.melanee.textdsl.modeleditor.textualdslmodelinterpreter.TextualDSLModelInterpreter;
+import org.melanee.textdsl.models.weaving.M2TWeaving.M2TWeavingFactory;
 import org.osgi.framework.Bundle;
 
 /**
- * Our sample handler extends AbstractHandler, an IHandler base class.
+ * Robot Handler extends AbstractHandler, an IHandler base class.
  * 
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
@@ -45,12 +52,13 @@ public class RobotHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		try {
 
+		MessageConsole myConsole = findConsole("Nao SDK");
+		myConsole.activate();
+		MessageConsoleStream out = myConsole.newMessageStream();
+
+		try {
 			// setup console
-			MessageConsole myConsole = findConsole("Nao SDK");
-			myConsole.activate();
-			MessageConsoleStream out = myConsole.newMessageStream();
 			out.println("Compiling for Nao ...");
 
 			// write file
@@ -61,25 +69,34 @@ public class RobotHandler extends AbstractHandler {
 			writer.println("// Melanee triggered build");
 			writer.println("// ------------------------");
 			writer.println("// " + new Date().toGMTString());
-
 			writer.println("void APIDemonstration::script()");
 			writer.println("{");
 
-			writer.println("agree();");
+			// get melanee output
+			TextualDSLModelInterpreter interpreter = new TextualDSLModelInterpreter(
+					new MultiLevelModelPartitionScanner(),
+					new MultilevelLiteralScanner(),
+					new MultiLevelModelColorConstants(),
+					M2TWeavingFactory.eINSTANCE.createWeavingModel());
+			String textFromModel = interpreter
+					.getTextFromModel(PLMFactory.eINSTANCE.createEntity());
+			writer.println(textFromModel);
+
+			// writer.println("agree();");
 
 			// template post
 			writer.println("}");
+
 			writer.close();
 
 			// invoke build
-			// TODO
 			executeCommand(BUILD_COMMAND, new File(BUILD_TOOLS));
 
 			// execute run on NAO
-			// TODO
-			executeCommand(EXECUTION_COMMAND, new File(EXECUTION_FOLDER));// resolveBundleFile("cmds"));
+			executeCommand(EXECUTION_COMMAND, new File(EXECUTION_FOLDER));
 		} catch (Exception e) {
 			e.printStackTrace();
+			out.println(e.toString());
 		}
 		return null;
 	}

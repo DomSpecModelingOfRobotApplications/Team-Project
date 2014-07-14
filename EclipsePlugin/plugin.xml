@@ -33,5 +33,12 @@
          </menu>
       </menuContribution>
    </extension>
+   <extension
+         point="org.melanee.core.popupbarbuttons.provider">
+      <provider
+            class="eclipseplugin.PlayButton"
+            id="org.drm.playButton">
+      </provider>
+   </extension>
 
 </plugin>
