@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: NaoPlugin
 Bundle-SymbolicName: NaoPlugin;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: naoplugin.Activator
+Bundle-Activator: org.drm.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.console;bundle-version="3.5.200",

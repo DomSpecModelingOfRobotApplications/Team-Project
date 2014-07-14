@@ -1,4 +1,4 @@
-package naoplugin;
+package org.drm;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

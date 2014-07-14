@@ -3,42 +3,20 @@
 <plugin>
 
    <extension
-         point="org.eclipse.ui.commands">
-      <command
-            name="Run"
-            categoryId="NaoPlugin.commands.category"
-            id="NaoPlugin.commands.sampleCommand">
-      </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            commandId="NaoPlugin.commands.sampleCommand"
-            class="naoplugin.handlers.RobotHandler">
-      </handler>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-         <menu
-               label="Robot Project"
-               mnemonic="M"
-               id="NaoPlugin.menus.sampleMenu">
-            <command
-                  commandId="NaoPlugin.commands.sampleCommand"
-                  mnemonic="S"
-                  id="NaoPlugin.menus.sampleCommand">
-            </command>
-         </menu>
-      </menuContribution>
-   </extension>
-   <extension
          point="org.melanee.core.popupbarbuttons.provider">
       <provider
-            class="eclipseplugin.PlayButton"
+            class="org.drm.PlayButton"
             id="org.drm.playButton">
       </provider>
+   </extension>
+   
+   <!-- Preferences -->
+      <extension
+      point = "org.eclipse.ui.preferencePages">
+       <page id="org.drm.preferences"
+	    class="org.drm.PreferencePage"
+            name="Deep Robot Model">
+       </page>
    </extension>
 
 </plugin>
