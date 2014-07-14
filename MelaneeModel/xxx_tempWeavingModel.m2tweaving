@@ -1,74 +1,25 @@
 <?xml version="1.0" encoding="ASCII"?>
 <M2TWeaving:WeavingModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:M2TWeaving="http://melanee.org/M2TWeaving" xmlns:PLM="http://melanee.org/PLM">
   <links>
-    <modelElement xsi:type="PLM:Level" href="DeepRobotModel.lml#_85NnwJYvEeOhjpu65D91-A"/>
+    <modelElement xsi:type="PLM:Level" href="DeepRobotModelProgram.lml#_85NnwJYvEeOhjpu65D91-A"/>
     <children xsi:type="M2TWeaving:WeavingLink">
-      <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_2LX6wK5tEeOkrq5zxpBIGw"/>
+      <modelElement xsi:type="PLM:Entity" href="DeepRobotModelProgram.lml#_2LX6wK5tEeOkrq5zxpBIGw"/>
       <children xsi:type="M2TWeaving:TextElement" length="16" text="move_navigation("/>
       <children xsi:type="M2TWeaving:WeavingLink">
-        <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_2L_l0K5tEeOkrq5zxpBIGw"/>
+        <modelElement xsi:type="PLM:Attribute" href="DeepRobotModelProgram.lml#_2L_l0K5tEeOkrq5zxpBIGw"/>
         <children xsi:type="M2TWeaving:TextElement" offset="16" length="3" text="4.0"/>
       </children>
       <children xsi:type="M2TWeaving:TextElement" offset="19" length="1" text=","/>
       <children xsi:type="M2TWeaving:WeavingLink">
-        <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_2LqOoK5tEeOkrq5zxpBIGw"/>
+        <modelElement xsi:type="PLM:Attribute" href="DeepRobotModelProgram.lml#_2LqOoK5tEeOkrq5zxpBIGw"/>
         <children xsi:type="M2TWeaving:TextElement" offset="20" length="3" text="2.6"/>
       </children>
       <children xsi:type="M2TWeaving:TextElement" offset="23" length="1" text=","/>
       <children xsi:type="M2TWeaving:WeavingLink">
-        <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_2L1NwK5tEeOkrq5zxpBIGw"/>
+        <modelElement xsi:type="PLM:Attribute" href="DeepRobotModelProgram.lml#_2L1NwK5tEeOkrq5zxpBIGw"/>
         <children xsi:type="M2TWeaving:TextElement" offset="24" length="5" text="0.785"/>
       </children>
       <children xsi:type="M2TWeaving:TextElement" offset="29" length="4" text=");&#xD;&#xA;"/>
-      <children xsi:type="M2TWeaving:WeavingLink">
-        <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_de_M4AXKEeS5EaTxJ97PMw"/>
-        <children xsi:type="M2TWeaving:WeavingLink">
-          <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_iDv7MNrNEeOl4O-CI3MuVw"/>
-          <children xsi:type="M2TWeaving:WeavingLink">
-            <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_iD99oNrNEeOl4O-CI3MuVw"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="33" length="7" text="boolean"/>
-          </children>
-          <children xsi:type="M2TWeaving:TextElement" offset="40" length="1" text=" "/>
-          <children xsi:type="M2TWeaving:WeavingLink">
-            <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_iD3P8NrNEeOl4O-CI3MuVw"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="41" length="12" text="detectedBall"/>
-          </children>
-        </children>
-        <children xsi:type="M2TWeaving:TextElement" offset="53" length="17" text="=detect_obstacle("/>
-        <children xsi:type="M2TWeaving:WeavingLink">
-          <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_dfQ5sAXKEeS5EaTxJ97PMw"/>
-          <children xsi:type="M2TWeaving:TextElement" offset="70" length="1" text="5"/>
-        </children>
-        <children xsi:type="M2TWeaving:TextElement" offset="71" length="4" text=");&#xD;&#xA;"/>
-        <children xsi:type="M2TWeaving:WeavingLink">
-          <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_Hq-TMLQWEeOy7YyPGLNp3g"/>
-          <children xsi:type="M2TWeaving:TextElement" offset="75" length="3" text="if("/>
-          <children xsi:type="M2TWeaving:WeavingLink">
-            <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_G3__wNrGEeON2dcg6S_kNA"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="78" length="12" text="detectedBall"/>
-          </children>
-          <children xsi:type="M2TWeaving:TextElement" offset="90" length="4" text="){&#xD;&#xA;"/>
-          <children xsi:type="M2TWeaving:WeavingLink">
-            <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_i_LScNxeEeOg4fo_q0ga3g"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="94" length="10" text="agree();&#xD;&#xA;"/>
-          </children>
-          <children xsi:type="M2TWeaving:TextElement" offset="104" length="10" text="}&#xD;&#xA;else{&#xD;&#xA;"/>
-          <children xsi:type="M2TWeaving:WeavingLink">
-            <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_Un2nkNxeEeOg4fo_q0ga3g"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="114" length="13" text="disagree();&#xD;&#xA;"/>
-          </children>
-          <children xsi:type="M2TWeaving:TextElement" offset="127" length="3" text="}&#xD;&#xA;"/>
-          <children xsi:type="M2TWeaving:WeavingLink">
-            <modelElement xsi:type="PLM:Entity" href="DeepRobotModel.lml#_AMxOANxfEeOg4fo_q0ga3g"/>
-            <children xsi:type="M2TWeaving:TextElement" offset="130" length="9" text="posture(&quot;"/>
-            <children xsi:type="M2TWeaving:WeavingLink">
-              <modelElement xsi:type="PLM:Attribute" href="DeepRobotModel.lml#_ANBFoNxfEeOg4fo_q0ga3g"/>
-              <children xsi:type="M2TWeaving:TextElement" offset="139" length="8" text="SitRelax"/>
-            </children>
-            <children xsi:type="M2TWeaving:TextElement" offset="147" length="5" text="&quot;);&#xD;&#xA;"/>
-          </children>
-        </children>
-      </children>
     </children>
   </links>
 </M2TWeaving:WeavingModel>
